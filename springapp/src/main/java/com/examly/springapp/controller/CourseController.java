@@ -19,10 +19,14 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<Boolean> createCourse(@RequestBody Course course) {
-        boolean created = courseService.createCourse(course);
-        return ResponseEntity.status(HttpStatus.CREATED).body(created);
+    public ResponseEntity<Course> createCourse(@RequestBody Course course) {
+        Course createdCourse = courseService.createCourse(course);
+        if (createdCourse == null) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdCourse);
     }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Course> updateCourse(@PathVariable("id") int courseId, @RequestBody Course course) {

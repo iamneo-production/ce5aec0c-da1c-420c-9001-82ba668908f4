@@ -15,10 +15,10 @@ public class CourseService {
         this.courseRepository = courseRepository;
     }
 
-    public boolean createCourse(Course course) {
-        Course savedCourse = courseRepository.save(course);
-        return savedCourse != null;
+    public Course createCourse(Course course) {
+        return courseRepository.save(course);
     }
+    
 
     public Course updateCourse(int courseId, Course course) {
         if (!courseRepository.existsById(courseId)) {
