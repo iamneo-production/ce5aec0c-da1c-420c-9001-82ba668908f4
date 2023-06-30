@@ -19,18 +19,24 @@ public class StudentService {
         this.studentRepo = studentRepo;
     }
 
-    public Student insertStudent(Student student) {
-        return studentRepo.save(student);
+    public boolean insertStudent(Student student) {
+        try {
+            studentRepo.save(student);
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
+    
 
     public List<Student> getAllStudents() {
         return studentRepo.findAll();
     }
-
     public Optional<Student> getStudentById(Long id) {
         return studentRepo.findById(id);
     }
-
+    
     public Student updateStudentById(Long id, Student updatedStudent) {
         Optional<Student> optionalStudent = studentRepo.findById(id);
         if (optionalStudent.isPresent()) {

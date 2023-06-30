@@ -37,13 +37,15 @@ public class StudentController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+    
+    
 
     @PostMapping
-    public ResponseEntity<Student> createStudent(@RequestBody Student student) {
-        Student createdStudent = studentService.insertStudent(student);
-        return new ResponseEntity<>(createdStudent, HttpStatus.CREATED);
+    public ResponseEntity<Boolean> createStudent(@RequestBody Student student) {
+        boolean isCreated = studentService.insertStudent(student);
+        return new ResponseEntity<>(isCreated, HttpStatus.OK);
     }
-
+    
     @PutMapping("/{id}")
     public ResponseEntity<Student> updateStudentById(@PathVariable Long id, @RequestBody Student updatedStudent) {
         Student student = studentService.updateStudentById(id, updatedStudent);
