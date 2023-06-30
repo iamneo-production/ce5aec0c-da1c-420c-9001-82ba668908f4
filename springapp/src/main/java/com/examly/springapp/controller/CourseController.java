@@ -5,11 +5,7 @@ import com.examly.springapp.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/courses")
@@ -23,31 +19,17 @@ public class CourseController {
     }
 
     @PostMapping
-    public ResponseEntity<?> createCourse(@RequestBody @Valid Course course, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid course data");
-        }
-
+    public ResponseEntity<Boolean> createCourse(@RequestBody Course course) {
         boolean created = courseService.createCourse(course);
-        if (created) {
-            return ResponseEntity.status(HttpStatus.CREATED).body("Course created successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to create course");
-        }
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateCourse(@PathVariable int id, @RequestBody @Validated Course course,
-                                          BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Invalid course data");
+    public ResponseEntity<Course> updateCourse(@PathVariable("id") int courseId, @RequestBody Course course) {
+        Course updatedCourse = courseService.updateCourse(courseId, course);
+        if (updatedCourse == null) {
+            return ResponseEntity.notFound().build();
         }
-
-        boolean updated = courseService.updateCourse(id, course);
-        if (updated) {
-            return ResponseEntity.ok("Course updated successfully");
-        } else {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course not found");
-        }
+        return ResponseEntity.status(HttpStatus.OK).body(updatedCourse);
     }
 }
