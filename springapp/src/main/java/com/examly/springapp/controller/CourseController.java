@@ -70,27 +70,17 @@ public class CourseController {
 		}
 	}
 	
-	// @DeleteMapping("/courses/{id}")
-	// public ResponseEntity<List<Course>> deletecourse(@PathVariable long id) {
-	// 	Optional<Course> courseOptional = courep.findById(id);
-	// 	if (courseOptional.isPresent()) {
-	// 		Course course = courseOptional.get();
-	// 		courep.delete(course);
-	// 		List<Course> courses = courep.findAll();
-	// 		return ResponseEntity.ok(courses);
-	// 	} else {
-	// 		return ResponseEntity.notFound().build();
-	// 	}
-	// }
 	@DeleteMapping("/courses/{id}")
-	public ResponseEntity<HttpStatus> deleteCourse(@PathVariable long id) {
-    	Optional<Course> courseOptional = courep.findById(id);
-    	if (courseOptional.isPresent()) {
-        	Course course = courseOptional.get();
-        	courep.delete(course);
-        	return ResponseEntity.ok(HttpStatus.OK);
-    	} else {
-        	return ResponseEntity.notFound().build();
-    	}
+	public ResponseEntity<List<Course>> deletecourse(@PathVariable long id) {
+		Optional<Course> courseOptional = courep.findById(id);
+		if (courseOptional.isPresent()) {
+			Course course = courseOptional.get();
+			courep.delete(course);
+			List<Course> courses = courep.findAll();
+			return ResponseEntity.ok(courses);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
+	
 }
