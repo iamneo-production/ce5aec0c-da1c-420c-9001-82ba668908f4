@@ -1,38 +1,32 @@
 package com.examly.springapp.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Positive;
 
 @Entity
-public class Course {
+public class Course2 {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @NotBlank(message = "Name is required")
+    @NotBlank
     private String name;
 
-    @NotBlank(message = "Description is required")
+    @NotBlank
     private String description;
 
-    @NotBlank(message = "Prerequisites is required")
+    @NotBlank
     private String prerequisites;
 
-    @Positive(message = "Credits must be a positive value")
+    @Positive
     private int credits;
 
-    public Course() {
-    }
-
-    public Course(int id, String name, String description, String prerequisites, int credits) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.prerequisites = prerequisites;
-        this.credits = credits;
-    }
+    // Getters and setters
 
     public int getId() {
         return id;
