@@ -26,7 +26,7 @@ public class StudentService {
         return studentRepo.findAll();
     }
 
-    public Student getStudnetById(long id) {
+    public Student getStudentById(long id) {
 		return studentRepo.findById(id).get();
 	}
 
