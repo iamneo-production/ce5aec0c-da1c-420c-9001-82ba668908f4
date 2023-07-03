@@ -43,4 +43,49 @@ public class StudentController {
         }
     }
 
+    @PostMapping("/students")
+    public ResponseEntity<Boolean> createStudent(@RequestBody Student student) {
+        studentRepo.save(student);
+        return ResponseEntity.ok(true);
+    }
+
+    @PutMapping("/students/{id}")
+	public ResponseEntity<Student> updateStudentById(@PathVariable long id,@RequestBody Student updatedStudent) {
+		Optional<Student> studentOp = studentRepo.findById(id);
+        if(studentOp.isPresent()){ 
+            Student student = studentOp.get();
+		student.setFirstName(updatedStudent.getFirstName());
+            student.setLastName(updatedStudent.getLastName());
+            student.setEmail(updatedStudent.getEmail());
+            student.setPassword(updatedStudent.getPassword());
+            student.setAddress(updatedStudent.getAddress());
+            student.setPhoneNumber(updatedStudent.getPhoneNumber());
+            studentRepo.save(student);
+
+		return ResponseEntity.ok(student);
+        }
+        else{
+            return ResponseEntity.notFound().build();
+        }
+	}
+
+    @DeleteMapping("/students/{id}")
+    public ResponseEntity<List<Student>> deleteStudentById(@PathVariable Long id) {
+        Student student = studentService.getStudnetById(id);
+        studentRepo.delete(student);
+
+        return ResponseEntity.ok(studentRepo.findAll());
+    }
+
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody Student student) {
+        boolean isAuthenticated = studentService.loginUser(student);
+        if (isAuthenticated) {
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Invalid email or Password", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
+
 }
