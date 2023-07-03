@@ -7,4 +7,5 @@ com/examly/springapp/repository/CourseRepo.class
 com/examly/springapp/controller/StudentController.class
 com/examly/springapp/model/Course.class
 com/examly/springapp/controller/CourseController.class
+com/examly/springapp/controller/StudentController1.class
 com/examly/springapp/repository/StudentRepo.class
