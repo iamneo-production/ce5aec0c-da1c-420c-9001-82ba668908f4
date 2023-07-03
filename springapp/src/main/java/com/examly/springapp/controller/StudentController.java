@@ -15,7 +15,7 @@ import java.util.Optional;
 
 @RestController
 @CrossOrigin("*")
-// @RequestMapping("/students")
+@RequestMapping("/students")
 public class StudentController 
 {
     private StudentService studentService;
@@ -29,13 +29,13 @@ public class StudentController
         this.studentService = studentService;
     }
 
-    @GetMapping("/students")
+    @GetMapping
     public List<Student> getAllStudents() 
     {
         return studentRepo.findAll();
     }
 
-    @GetMapping("/students/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<Student> getStudentById(@PathVariable Long id) 
     {
         Optional<Student> studentOptional = studentRepo.findById(id);
@@ -47,14 +47,14 @@ public class StudentController
         }
     }
 
-    @PostMapping("/students")
+    @PostMapping
     public ResponseEntity<Boolean> createStudent(@RequestBody Student student) 
     {
         studentRepo.save(student);
         return ResponseEntity.ok(true);
     }
 
-    @PutMapping("/students/{id}")
+    @PutMapping("/{id}")
 	public ResponseEntity<Student> updateStudentById(@PathVariable long id,@RequestBody Student updatedStudent) 
     {
 		Optional<Student> studentOp = studentRepo.findById(id);
@@ -75,7 +75,7 @@ public class StudentController
         }
 	}
 
-    @DeleteMapping("/students/{id}")
+    @DeleteMapping("/{id}")
     public ResponseEntity<List<Student>> deleteStudentById(@PathVariable Long id) {
         Student student = studentService.getStudnetById(id);
         studentRepo.delete(student);
