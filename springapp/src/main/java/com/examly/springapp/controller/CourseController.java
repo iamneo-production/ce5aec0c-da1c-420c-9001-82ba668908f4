@@ -36,4 +36,48 @@ public class CourseController {
 	public List<Course> getAllCourses() {
 		return courep.findAll();
 	}
+
+	@PostMapping("/courses")
+	public ResponseEntity<Boolean> createcourse(@RequestBody Course course) {
+		courep.save(course);
+
+		return ResponseEntity.ok(true);
+	}
+	
+	@PutMapping("/courses/{id}")
+	public ResponseEntity<Course> updatecoursedata(@PathVariable long id,@RequestBody Course coursedet) {
+		Course cors = courser.getCourseById(id);
+		cors.setName(coursedet.getName());
+		cors.setDescription(coursedet.getDescription());
+		cors.setPrerequisites(coursedet.getPrerequisites());
+		cors.setCredits(coursedet.getCredits());
+		
+		courep.save(cors);
+
+		return ResponseEntity.ok(cors);
+	}
+	
+	@GetMapping("/courses/{id}")
+	public ResponseEntity<Course> getCourseById(@PathVariable long id){
+		Optional<Course> courseOptional = courep.findById(id);
+		if (courseOptional.isPresent()) {
+			Course course = courseOptional.get();
+			return ResponseEntity.ok(course);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@DeleteMapping("/courses/{id}")
+	public ResponseEntity<List<Course>> deletecourse(@PathVariable long id) {
+		Optional<Course> courseOptional = courep.findById(id);
+		if (courseOptional.isPresent()) {
+			Course course = courseOptional.get();
+			courep.delete(course);
+			List<Course> courses = courep.findAll();
+			return ResponseEntity.ok(courses);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }
