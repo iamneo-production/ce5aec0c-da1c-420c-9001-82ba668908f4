@@ -1,17 +1,9 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/CourseController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Course.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Student.java
-<<<<<<< HEAD
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/CourseRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/StudentController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/StudentRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/StudentService.java
-=======
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/StudentController.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/CourseRepo.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/StudentRepo.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/StudentService.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
->>>>>>> 5a8470b74a35023642c631f4fa04539096a328e8
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/CourseService.java
