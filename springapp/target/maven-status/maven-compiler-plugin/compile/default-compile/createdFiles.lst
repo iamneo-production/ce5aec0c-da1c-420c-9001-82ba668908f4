@@ -1,5 +1,6 @@
 com/examly/springapp/service/StudentService.class
 com/examly/springapp/service/CourseService.class
+com/examly/springapp/controller/CourseController1.class
 com/examly/springapp/SpringappApplication.class
 com/examly/springapp/model/Student.class
 com/examly/springapp/repository/CourseRepo.class
