@@ -25,7 +25,8 @@ public class CourseService {
 	public Course getCourseById(long id) {
 		return courserep.findById(id).get();
 	}
-    public String Delete(long id) {
+	
+	public String Delete(long id) {
         courserep.deleteById(id);
         return "Course deleted successfully";
     }

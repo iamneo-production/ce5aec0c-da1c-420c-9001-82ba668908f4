@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 public class StudentService {
     @Autowired
@@ -24,6 +25,7 @@ public class StudentService {
     public List<Student> getAllStudents() {
         return studentRepo.findAll();
     }
+
     public Student getStudnetById(long id) {
 		return studentRepo.findById(id).get();
 	}
