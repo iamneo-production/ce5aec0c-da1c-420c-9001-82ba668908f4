@@ -8,13 +8,16 @@ public class Profile {
 	@Id
 	private int id;
     private String firstName;
-    private String lastName;
+    private String lastName;           
     private String email;
     private String password;
     private String address;
     private String phoneNumber;
+    private String dob;
+    private String imageurl;
+    private String gender;
 	public Profile(int id, String firstName, String lastName, String email, String password, String address,
-			String phoneNumber) {
+			String phoneNumber, String dob, String imageurl, String gender) {
 		super();
 		this.id = id;
 		this.firstName = firstName;
@@ -23,7 +26,9 @@ public class Profile {
 		this.password = password;
 		this.address = address;
 		this.phoneNumber = phoneNumber;
-		
+		this.dob = dob;
+		this.imageurl = imageurl;
+		this.gender = gender;
 	}
 	public Profile() {
 		super();
@@ -71,13 +76,36 @@ public class Profile {
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	public String getImageurl() {
+		return imageurl;
+	}
+	public void setImageurl(String imageurl) {
+		this.imageurl = imageurl;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
 	@Override
 	public String toString() {
 		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", password=" + password + ", address=" + address + ", phoneNumber=" + phoneNumber + "]";
+				+ ", password=" + password + ", address=" + address + ", phoneNumber=" + phoneNumber + ", dob=" + dob
+				+ ", imageurl=" + imageurl + ", gender=" + gender + "]";
 	}
-	
     
+    
+    
+    
+    
+	
     
     
     
