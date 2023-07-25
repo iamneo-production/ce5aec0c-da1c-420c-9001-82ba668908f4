@@ -59,4 +59,24 @@ public class StudentController1 {
 			return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
 		}
 	}
+
+	@PutMapping("/students/{id}")
+	public ResponseEntity<Student> updateStudentById(@PathVariable long id, @RequestBody Student updatedStudent) {
+		Optional<Student> studentOp = studentRepo.findById(id);
+		if (studentOp.isPresent()) {
+			Student student = studentOp.get();
+			student.setFirstName(updatedStudent.getFirstName());
+			student.setLastName(updatedStudent.getLastName());
+			student.setEmail(updatedStudent.getEmail());
+			student.setPassword(updatedStudent.getPassword());
+			student.setAddress(updatedStudent.getAddress());
+			student.setPhoneNumber(updatedStudent.getPhoneNumber());
+			student.setDob(updatedStudent.getDob());
+			student.setGender(updatedStudent.getGender());
+			studentRepo.save(student);
+
+			return ResponseEntity.ok(student);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 }

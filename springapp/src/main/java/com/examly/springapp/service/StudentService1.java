@@ -24,4 +24,9 @@ public class StudentService1 {
         else {
         return null;}
     }
+
+    public Student insertStudent(Student student) {
+        return studentRepo.save(student);
+    }
+    
 }
