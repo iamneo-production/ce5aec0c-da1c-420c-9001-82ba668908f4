@@ -11,6 +11,18 @@ public class CourseService1 {
     @Autowired
     private CourseRepo courserep;
 
+    public List<Course> getAllCourses(){
+		return courserep.findAll();
+	}
+
+    public Course getCourseById(long id) {
+		return courserep.findById(id).get();
+	}
+
+    public Course getCourseByName(String name) {
+		return courserep.findByname(name);
+	}
+
     public String InsertCourse(Course course) {
 		courserep.save(course);
 		return "Insert SuccessFully";

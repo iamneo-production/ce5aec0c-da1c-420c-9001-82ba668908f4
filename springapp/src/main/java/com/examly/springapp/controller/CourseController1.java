@@ -32,11 +32,27 @@ public class CourseController1 {
 		this.courser = courser;
 	}
 
+	@GetMapping("/courses")
+	public List<Course> getAllCourses() {
+		return courep.findAll();
+	}
+
     @PostMapping("/courses")
 	public ResponseEntity<Boolean> createcourse(@RequestBody Course course) {
 		courep.save(course);
 
 		return ResponseEntity.ok(true);
+	}
+
+	@GetMapping("/courses/{id}")
+	public ResponseEntity<Course> getCourseById(@PathVariable long id){
+		Optional<Course> courseOptional = courep.findById(id);
+		if (courseOptional.isPresent()) {
+			Course course = courseOptional.get();
+			return ResponseEntity.ok(course);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 	
 	@PutMapping("/courses/{id}")
@@ -67,5 +83,5 @@ public class CourseController1 {
 	    } else {
 	        return ResponseEntity.notFound().build();
 	    }
-    
+	}
 }
