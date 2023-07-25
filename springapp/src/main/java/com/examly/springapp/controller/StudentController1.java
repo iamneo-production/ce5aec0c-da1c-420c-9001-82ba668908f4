@@ -79,4 +79,12 @@ public class StudentController1 {
 		} else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+	@DeleteMapping("/students/{id}")
+	public ResponseEntity<List<Student>> deleteStudentById(@PathVariable Long id) {
+		Student student = studentService.getStudentById(id);
+		studentRepo.delete(student);
+
+		return ResponseEntity.ok(studentRepo.findAll());
+	}
 }
