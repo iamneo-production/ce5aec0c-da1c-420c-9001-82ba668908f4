@@ -1,6 +1,14 @@
 package com.examly.springapp.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.ElementCollection;
 
 import java.util.List;
 
@@ -12,7 +20,7 @@ public class Admission {
 
     @ManyToOne
     @JoinColumn(name = "student_id")
-    private Student student;
+    private Student1 student;
 
     private String status;
 
@@ -31,11 +39,11 @@ public class Admission {
         this.admId = admId;
     }
 
-    public Student getStudent() {
+    public Student1 getStudent() {
         return student;
     }
 
-    public void setStudent(Student student) {
+    public void setStudent(Student1 student) {
         this.student = student;
     }
 

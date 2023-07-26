@@ -3,6 +3,14 @@ package com.examly.springapp.controller;
 import java.util.List;
 import java.util.Map;
 
+import com.examly.springapp.model.Course1;
+import com.examly.springapp.model.Enrollment;
+import com.examly.springapp.model.Student1;
+import com.examly.springapp.repository.EnrollmentRepo;
+import com.examly.springapp.service.CourseService1;
+import com.examly.springapp.service.EnrollmentService;
+import com.examly.springapp.service.StudentService1;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -28,10 +36,10 @@ public class EntrollmentController {
 	private EnrollmentService enrolserv;
 	
 	@Autowired
-	private StudentService stuser;
+	private StudentService1 stuser;
 	
 	@Autowired
-	private CourseService couser;
+	private CourseService1 couser;
 	
 	@GetMapping
 	public List<Enrollment> getAllEnrollments(){
@@ -44,11 +52,11 @@ public class EntrollmentController {
 		Enrollment enrollment = new Enrollment();
 		
 		long id=Long.parseLong(enroll.get("studentId"));
-		Student stu = stuser.getStudentById(id);
+		Student1 stu = stuser.getStudentById(id);
 		
 		enrollment.setStudent(stu);
 		
-		Course cou = couser.getCourseByName(enroll.get("coursename"));
+		Course1 cou = couser.getCourseByName(enroll.get("coursename"));
 		
 		enrollment.setCourse(cou);
 		
@@ -71,7 +79,7 @@ public class EntrollmentController {
 	    }
 
 //	    long courseId = Long.parseLong(enroldet.get("courseId")); // Assuming the key for course ID is "courseId" in the request body
-	    Course cour = couser.getCourseById(enroldet); // Assuming you have a method to retrieve the Course by its ID
+	    Course1 cour = couser.getCourseById(enroldet); // Assuming you have a method to retrieve the Course by its ID
 
 	    if (cour == null) {
 	        return ResponseEntity.badRequest().body(enroll);

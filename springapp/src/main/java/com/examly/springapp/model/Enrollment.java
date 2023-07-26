@@ -1,13 +1,16 @@
 package com.examly.springapp.model;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+
+import com.examly.springapp.model.Student1;
+import com.examly.springapp.model.Course1;
 
 
 @Entity
@@ -20,11 +23,11 @@ public class Enrollment {
 	
 	@ManyToOne
 	@JoinColumn(name = "student_id")
-	private Student student;
+	private Student1 student;
 	
 	@ManyToOne
 	@JoinColumn(name = "course_id")
-	private Course course;
+	private Course1 course;
 	
 	@Column(name = "Grade")
 	private String grade;
@@ -36,7 +39,7 @@ public class Enrollment {
 		super();
 	}
 
-	public Enrollment(long enrollId, Student student, Course course, String grade) {
+	public Enrollment(long enrollId, Student1 student, Course1 course, String grade) {
 		super();
 		this.enrollId = enrollId;
 		this.student = student;
@@ -52,19 +55,19 @@ public class Enrollment {
 		this.enrollId = enrollId;
 	}
 
-	public Student getStudent() {
+	public Student1 getStudent() {
 		return student;
 	}
 
-	public void setStudent(Student student) {
+	public void setStudent(Student1 student) {
 		this.student = student;
 	}
 
-	public Course getCourse() {
+	public Course1 getCourse() {
 		return course;
 	}
 
-	public void setCourse(Course course) {
+	public void setCourse(Course1 course) {
 		this.course = course;
 	}
 

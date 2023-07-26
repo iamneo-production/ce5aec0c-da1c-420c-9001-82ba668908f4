@@ -2,6 +2,16 @@ package com.examly.springapp.controller;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import com.examly.springapp.config.MediaFileService;
+import com.examly.springapp.model.Admission;
+import com.examly.springapp.model.Enrollment;
+import com.examly.springapp.model.Student1;
+import com.examly.springapp.repository.AdmissionRepo;
+import com.examly.springapp.repository.EnrollmentRepo;
+import com.examly.springapp.repository.StudentRepo1;
+import com.examly.springapp.service.AdmissionService;
+
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -30,7 +40,7 @@ public class AdmissionController {
 	@Autowired
 	private final AdmissionService admissionService;
 	@Autowired
-	private StudentRepo studentRepo;
+	private StudentRepo1 studentRepo;
 	@Autowired
 	private EnrollmentRepo enrollmentRepo;
 	@Autowired
@@ -62,9 +72,7 @@ public class AdmissionController {
 	@PostMapping
 	public ResponseEntity<Admission> createAdmission(@ModelAttribute Admission admission,
 			@RequestParam("documents") MultipartFile[] documents, @RequestParam("studentId") Long studentId) {
-		System.out.println("Received " + documents.length + " documents.");
-
-		Student student = studentRepo.findById(studentId)
+		Student1 student = studentRepo.findById(studentId)
 				.orElseThrow(() -> new RuntimeException("student not found with id: " + studentId));
 
 		// Set the agent for the property
@@ -103,7 +111,7 @@ public class AdmissionController {
 	public ResponseEntity<List<Admission>> deleteAdmissionById(@PathVariable Long id) {
 		try {
 			// First, find the student record to check if it exists
-			Student student = studentRepo.findById(id).orElse(null);
+			Student1 student = studentRepo.findById(id).orElse(null);
 			if (student == null) {
 				return ResponseEntity.notFound().build();
 			}

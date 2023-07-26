@@ -1,9 +1,14 @@
 package com.examly.springapp.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "student", schema = "demobackend")
+@Table(name = "student_table", schema = "demobackend")
 public class Student1 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -72,21 +77,8 @@ public class Student1 {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	public Student(Long id, String firstName, String lastName, String email, String password, String address,
-			String phoneNumber, String dob, String imageurl, String gender) {
-		
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.password = password;
-		this.address = address;
-		this.phoneNumber = phoneNumber;
-		this.dob = dob;
-		
-		this.gender = gender;
-	}
-	public Student() {
+	
+	public Student1() {
 		
 	}
     
