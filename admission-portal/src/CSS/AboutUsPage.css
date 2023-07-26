@@ -1,0 +1,53 @@
+.about-us-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .about-us-heading {
+    background-color:#b38cb3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  .about-us-container h1{
+    text-align: center;
+    color:white;
+    background-color:#b38cb3;
+  }
+  .about-us-heading h1 {
+    font-size: 32px;
+    margin: 0;
+  }
+  
+  .about-us-container h2 {
+    font-size: 24px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    background-color:#b38cb3;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 15px;
+  }
+  
+  ol {
+    margin-left: 30px;
+    margin-bottom: 15px;
+  }
+  
+  li {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  strong {
+    font-weight: bold;
+  }
+  

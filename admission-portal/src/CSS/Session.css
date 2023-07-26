@@ -1,0 +1,93 @@
+.session-link {
+    color:#000000;
+  }
+.modelheader
+{
+  background-color: #8B008B;
+  color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+
+}
+.logintitle
+{
+  font-weight: 700;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.modeldio .modal-content {
+  border-radius: 30px;
+}
+.navpills
+{
+  background-color: rgb(252, 184, 121);
+  border-color: black;
+  gap: 10px;
+  border-radius: 8px;
+}
+  .session-link:hover{
+    color:#002fff;
+  }
+.logheading{
+text-align: center;
+margin-top: -50px;
+margin-bottom: 15px;
+}
+.logsignup_head
+{
+  text-align: center;
+  margin-top: 15px;
+margin-bottom: 15px;
+}
+.model-center{
+    background-color: rgb(247, 246, 246);
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
+.submitbutton
+{
+  background-color: #8B008B;
+  width: 100%;
+}
+.submitbutton:hover
+{
+  background-color: #8B008B;
+  transform: scale(1.055);
+  box-shadow:0 0 12px rgb(255, 141, 1);
+}
+.navsignup_text
+{
+  color: rgb(248, 140, 40);
+}
+.forgotpass_text
+{
+  color: rgb(248, 140, 40);
+}
+.goback_text{
+
+  font-size: small;
+  cursor: pointer;
+  margin-top: 20px;
+  height: 30px;
+  width: 80px;
+  border-radius: 8px;
+  border: 0.5px solid #000000; /* Set the border properties */
+  padding-left: 8px;
+  padding-top: 3px;
+}
+.goback_text:hover
+{
+  background-color: rgb(231, 217, 236);
+  transform: scale(1.05);
+}
+.LoginRole-button
+{
+  
+    margin: 50px;
+    width: 150px;
+    height: 50px;
+}
+.LoginRole-button:hover{
+   background-color: #8B008B;
+    transform: scale(1.05);
+    box-shadow:0 0 12px rgb(233, 158, 66);
+}
