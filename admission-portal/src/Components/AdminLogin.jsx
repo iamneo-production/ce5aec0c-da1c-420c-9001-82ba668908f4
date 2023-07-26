@@ -17,19 +17,14 @@ const AdminLogin = () => {
   const [validationErrors, setValidationErrors] = useState({
     emailError: ''
   });
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState(''); // Changed 'error' state to 'errorMessage'
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
-    if (name === 'email') {
+    if (name === 'emailId') { // Corrected the name to 'emailId'
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (value.trim() === '') {
-        setValidationErrors({
-          ...validationErrors,
-          emailError: '',
-        });
-      } else if (!emailRegex.test(value)) {
+      if (!emailRegex.test(value)) {
         setValidationErrors({
           ...validationErrors,
           emailError: 'Invalid email address.',
@@ -62,7 +57,7 @@ const AdminLogin = () => {
     } catch (error) {
       // Handle login error
       console.error(error);
-      setError('Invalid email or password'); // Set the error message for authentication failure
+      setErrorMessage('Invalid email or password'); // Set the error message for authentication failure
     }
   };
 
@@ -105,7 +100,7 @@ const AdminLogin = () => {
                 />
               </Form.Group>
 
-              {error && <p style={{ color: 'red' }}>{error}</p>}
+              {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>} {/* Updated to show 'errorMessage' */}
 
               <Button variant="primary" type="submit" className="submitbutton">
                 LOGIN

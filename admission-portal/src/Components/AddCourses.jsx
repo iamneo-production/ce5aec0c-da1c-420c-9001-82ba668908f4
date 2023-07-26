@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import CourseService from '../services/MCourseService';
 import {Link, useNavigate, useParams } from 'react-router-dom';
-// import "./AddCourses.css";
+
 
 const AddCourses = () => {
 

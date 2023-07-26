@@ -18,12 +18,12 @@ const ApplicationStatus = ({ admissionId }) => {
       const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
       
       if (foundAdmission) {
-        const admissionId = foundAdmission.admId;
+        const admissionIds = foundAdmission.admId;
         console.log("status is", foundAdmission.status);
 
         try {
-          const response = await axios.get(`http://localhost:8080/admissions/${admissionId}`);
-          setStudent(response.data.student);
+          const response3 = await axios.get(`http://localhost:8080/admissions/${admissionIds}`);
+          setStudent(response3.data.student);
           setcStatus(foundAdmission.status);
           setFeedBack(foundAdmission.feedback);
 

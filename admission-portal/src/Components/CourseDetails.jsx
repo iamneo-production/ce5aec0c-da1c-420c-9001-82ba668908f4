@@ -1,8 +1,7 @@
 import React, { useEffect, useState,useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import CourseService from '../services/CourseService';
 import { Card} from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import '../CSS/CourseStyle.css';
 import axios from 'axios';
 import { UserContext } from '../services/UserProvider';
@@ -67,7 +66,7 @@ const CourseDetails = () => {
           }
           else if(currentstatus==='Rejected')
           {
-            alert('Your application process is not yet finished');
+            alert('Your application is Rejected. See the feedback in status');
             navigate('/ApplicationStatus');
           }
         }

@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Form, Col, Row, Button } from 'react-bootstrap';
-import { Container } from 'react-bootstrap';
+import { Form, Col, Row, Button,Container } from 'react-bootstrap';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -67,9 +66,10 @@ const ApplicationForm = () => {
     formData.append('studentId', userId);
     console.log(userId);
     console.log(userId);
-    // Append each image file to the formData
-    for (let i = 0; i < admissionData.documents.length; i++) {
-      formData.append('documents', admissionData.documents[i]);
+    
+    // Append each image file to the formData using a for-of loop
+    for (const document of admissionData.documents) {
+      formData.append('documents', document);
     }
 
     try {

@@ -1,12 +1,11 @@
-import {useContext  } from 'react';
-import React from 'react';
+import React,{useContext  } from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { NavLink, useNavigate } from 'react-router-dom';
 import logo from '../Image/logo.png';
 import '../CSS/ListStyle.css';
 import {UserContext } from '../services/UserProvider';
 import axios from 'axios';
-// import Session from './Session';
+
 
 
 function DefaultHeader() {
@@ -170,7 +169,7 @@ function DefaultHeader() {
     }
     const handleLogoutClick = (e) => {
       e.preventDefault(); // Prevent the default NavLink behavior
-      if (window.confirm('Are you sure you want to logout?')) {
+      if (window.confirm('Are you sure you want to logout ?')) {
         handleLogout();
         navigate('/Home');
         window.scrollTo(0, 0);

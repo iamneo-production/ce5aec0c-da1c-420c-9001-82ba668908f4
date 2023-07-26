@@ -7,7 +7,6 @@ function AddEnrollment() {
   const [courses, setCourses] = useState([]);
   const [errorMessage, setErrorMessage] = useState("");
 
-//  let courses = []
   const [enroldetails, setEnroldetails] = useState({
     studentId: "",
     name: "",

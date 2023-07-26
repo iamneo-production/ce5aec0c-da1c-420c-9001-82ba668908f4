@@ -22,7 +22,8 @@ const ListCourses = () => {
         // Course deleted successfully, update the courses state
         CourseService.getAllCourses()
           .then((response) => {
-            setCourses(response.data);
+            setCourses(response.data); 
+            console.log(response.data);
           })
           .catch((error) => {
             console.log(error);
