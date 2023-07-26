@@ -24,7 +24,9 @@ public class StudentService1 {
         else {
         return null;}
     }
-
+    public Student getStudentById(long id) {
+        return studentRepo.findById(id).get();
+    }
     public Student insertStudent(Student student) {
         return studentRepo.save(student);
     }

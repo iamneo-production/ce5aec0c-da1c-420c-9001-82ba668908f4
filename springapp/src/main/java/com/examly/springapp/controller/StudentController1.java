@@ -37,7 +37,16 @@ public class StudentController1 {
 		List<Student> students = studentService.getAllStudents();
 		return new ResponseEntity<>(students, HttpStatus.OK);
 	}
-
+	@GetMapping("/students/{id}")
+	public ResponseEntity<Student> getStudentById(@PathVariable Long id) {
+		Optional<Student> studentOptional = studentRepo.findById(id);
+		if (studentOptional.isPresent()) {
+			Student student = studentOptional.get();
+			return ResponseEntity.ok(student);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
     @PostMapping("/students")
 	public ResponseEntity<Boolean> createStudent(@RequestBody Student student) {
 		studentRepo.save(student);
