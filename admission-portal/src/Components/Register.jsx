@@ -26,12 +26,7 @@ function RegisterForm({ onRegistrationSuccess, onSignInClick }) {
   
     if (name === 'phoneNumber') {
       const phoneRegex = /^\d{10}$/;
-      if (value.trim() === '') {
-        setValidationErrors({
-          ...validationErrors,
-          phoneError: '',
-        });
-      } else if (!phoneRegex.test(value)) {
+       if (!phoneRegex.test(value)) {
         setValidationErrors({
           ...validationErrors,
           phoneError: 'Phone number should be a 10-digit number.',
@@ -47,12 +42,7 @@ function RegisterForm({ onRegistrationSuccess, onSignInClick }) {
     // Validate email format
     if (name === 'email') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (value.trim() === '') {
-        setValidationErrors({
-          ...validationErrors,
-          emailError: '',
-        });
-      } else if (!emailRegex.test(value)) {
+      if (!emailRegex.test(value)) {
         setValidationErrors({
           ...validationErrors,
           emailError: 'Invalid email address.',
@@ -68,12 +58,7 @@ function RegisterForm({ onRegistrationSuccess, onSignInClick }) {
     // Validate password strength
     if (name === 'password') {
       const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
-      if (value.trim() === '') {
-        setValidationErrors({
-          ...validationErrors,
-          passwordError: '',
-        });
-      } else if (!passwordRegex.test(value)) {
+      if (!passwordRegex.test(value)) {
         setValidationErrors({
           ...validationErrors,
           passwordError:

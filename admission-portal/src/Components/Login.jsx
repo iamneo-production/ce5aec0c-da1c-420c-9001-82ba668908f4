@@ -1,12 +1,10 @@
-import { useState,useContext } from 'react';
+import { useState, useContext } from 'react';
 import { Button, Form, Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
 import '../CSS/Session.css';
-import { Link } from 'react-router-dom';
 import { UserContext } from '../services/UserProvider';
 import { FaBackward } from 'react-icons/fa';
-
 
 function Loginform({ onSignUpClick }) {
   const navigate = useNavigate();
@@ -14,24 +12,19 @@ function Loginform({ onSignUpClick }) {
 
   const [formData, setFormData] = useState({
     email: '',
-    password: ''
+    password: '',
   });
   const [validationErrors, setValidationErrors] = useState({
-    emailError: ''
+    emailError: '',
   });
-  const [error, setError] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
 
     if (name === 'email') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (value.trim() === '') {
-        setValidationErrors({
-          ...validationErrors,
-          emailError: '',
-        });
-      } else if (!emailRegex.test(value)) {
+      if (!emailRegex.test(value)) {
         setValidationErrors({
           ...validationErrors,
           emailError: 'Invalid email address.',
@@ -56,28 +49,27 @@ function Loginform({ onSignUpClick }) {
       // Store the token in localStorage
       localStorage.setItem('userId', userId);
       console.log(userId);
-      console.log("printing");
+      console.log('printing');
       // Handle successful login
       console.log(response.data);
       setUser('student');
-      console.log(localStorage.getItem("userRole"));
+      console.log(localStorage.getItem('userRole'));
       navigate('/StudentDashboard'); // Redirect to the desired route after successful login
     } catch (error) {
       // Handle login error
       console.error(error);
-      setError('Invalid email or password'); // Set the error message for authentication failure
+      setErrorMessage('Invalid email or password'); // Set the error message for authentication failure
     }
   };
 
   const handleSignUpClick = () => {
     onSignUpClick(); // Invoke the callback function from Session component
-
   };
 
-  const handleGoBack = ()=>{
+  const handleGoBack = () => {
     navigate('/LoginRole');
     window.scrollTo(0, 0);
-  }
+  };
 
   return (
     <Container className="session-bg">
@@ -93,7 +85,8 @@ function Loginform({ onSignUpClick }) {
             onChange={handleInputChange}
             required // Added required attribute
             isInvalid={!!validationErrors.emailError}
-          /><Form.Control.Feedback type="invalid">{validationErrors.emailError}</Form.Control.Feedback>
+          />
+          <Form.Control.Feedback type="invalid">{validationErrors.emailError}</Form.Control.Feedback>
           <Form.Text className="text-muted">
             We'll never share your email with anyone else.
           </Form.Text>
@@ -110,14 +103,8 @@ function Loginform({ onSignUpClick }) {
             required // Added required attribute
           />
         </Form.Group>
-{/* 
-        <Form.Group className="mb-3" controlId="formForgotPassword">
-          <Form.Text className="forgot-password">
-            <Link to="/forgot-password" className="forgotpass_text">Forgot Password?</Link>
-          </Form.Text>
-        </Form.Group> */}
 
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
 
         <Button variant="primary" type="submit" className="submitbutton">
           LOGIN
@@ -128,7 +115,11 @@ function Loginform({ onSignUpClick }) {
             Sign Up!
           </Link>
         </h6>
-        <p onClick={handleGoBack} className='goback_text'> <FaBackward/>Go Back</p>
+        <p onClick={handleGoBack} className="goback_text">
+          {' '}
+          <FaBackward />
+          Go Back
+        </p>
       </Form>
     </Container>
   );
