@@ -21,10 +21,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
-// @RequestMapping("/api/admin")
 public class CourseController {
-	
-	@Autowired
+    @Autowired
 	private CourseService courser;
 
 	@Autowired
@@ -38,7 +36,7 @@ public class CourseController {
 	public List<Course> getAllCourses() {
 		return courep.findAll();
 	}
-	
+
 	@PostMapping("/courses")
 	public ResponseEntity<Boolean> createcourse(@RequestBody Course course) {
 		courep.save(course);
@@ -82,5 +80,4 @@ public class CourseController {
 			return ResponseEntity.notFound().build();
 		}
 	}
-	
 }

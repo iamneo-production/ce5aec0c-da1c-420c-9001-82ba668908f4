@@ -8,11 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Courses")
-public class Course {
-    @Id
-	// @GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+@Table(name = "courses_table",schema = "demobackend")
+public class Course1 {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+private long id;
 	
 	@Column(name = "Course_Name")
 	private String name;
@@ -26,10 +26,14 @@ public class Course {
 	@Column(name = "Credits")
 	private String credits;
 
-
-	public Course() {
+	public Course1(long id, String name, String description, String prerequisites, String credits) {
+		this.id = id;
+		this.name = name;
+		this.description = description;
+		this.prerequisites = prerequisites;
+		this.credits = credits;
 	}
-	
+
 	public long getId() {
 		return id;
 	}
@@ -70,13 +74,9 @@ public class Course {
 		this.credits = credits;
 	}
 
-	public Course(long id, String name, String description, String prerequisites, String credits) {
-		super();
-		this.id = id;
-		this.name = name;
-		this.description = description;
-		this.prerequisites = prerequisites;
-		this.credits = credits;
+	public Course1() {
+		
 	}
+
 	
 }
