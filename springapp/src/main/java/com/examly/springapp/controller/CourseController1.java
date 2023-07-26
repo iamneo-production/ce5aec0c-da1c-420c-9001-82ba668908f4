@@ -3,6 +3,12 @@ package com.examly.springapp.controller;
 import java.util.List;
 import java.util.Optional;
 
+import com.examly.springapp.model.Course1;
+import com.examly.springapp.model.Enrollment;
+import com.examly.springapp.repository.CourseRepo1;
+import com.examly.springapp.repository.EnrollmentRepo;
+import com.examly.springapp.service.CourseService1;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -22,33 +28,33 @@ import org.springframework.web.bind.annotation.RestController;
 public class CourseController1 {
 
     @Autowired
-	private CourseService courser;
+	private CourseService1 courser;
 	@Autowired
 	private EnrollmentRepo enrollmentRepo;
 	@Autowired
-	private CourseRepo courep;
+	private CourseRepo1 courep;
 	
-	public CourseController(CourseService courser) {
+	public CourseController1(CourseService1 courser) {
 		this.courser = courser;
 	}
 
 	@GetMapping("/courses")
-	public List<Course> getAllCourses() {
+	public List<Course1> getAllCourses() {
 		return courep.findAll();
 	}
 
     @PostMapping("/courses")
-	public ResponseEntity<Boolean> createcourse(@RequestBody Course course) {
+	public ResponseEntity<Boolean> createcourse(@RequestBody Course1 course) {
 		courep.save(course);
 
 		return ResponseEntity.ok(true);
 	}
 
 	@GetMapping("/courses/{id}")
-	public ResponseEntity<Course> getCourseById(@PathVariable long id){
-		Optional<Course> courseOptional = courep.findById(id);
+	public ResponseEntity<Course1> getCourseById(@PathVariable long id){
+		Optional<Course1> courseOptional = courep.findById(id);
 		if (courseOptional.isPresent()) {
-			Course course = courseOptional.get();
+			Course1 course = courseOptional.get();
 			return ResponseEntity.ok(course);
 		} else {
 			return ResponseEntity.notFound().build();
@@ -56,8 +62,8 @@ public class CourseController1 {
 	}
 	
 	@PutMapping("/courses/{id}")
-	public ResponseEntity<Course> updatecoursedata(@PathVariable long id,@RequestBody Course coursedet) {
-		Course cors = courser.getCourseById(id);
+	public ResponseEntity<Course1> updatecoursedata(@PathVariable long id,@RequestBody Course1 coursedet) {
+		Course1 cors = courser.getCourseById(id);
 		cors.setName(coursedet.getName());
 		cors.setDescription(coursedet.getDescription());
 		cors.setPrerequisites(coursedet.getPrerequisites());
@@ -71,9 +77,9 @@ public class CourseController1 {
 
     @DeleteMapping("/courses/{id}")
 	public ResponseEntity<?> deleteCourse(@PathVariable long id) {
-	    Optional<Course> courseOptional = courep.findById(id);
+	    Optional<Course1> courseOptional = courep.findById(id);
 	    if (courseOptional.isPresent()) {
-	        Course course = courseOptional.get();
+	        Course1 course = courseOptional.get();
 	        // First, find the enrollments associated with the course
 	        List<Enrollment> enrollmentsToDelete = enrollmentRepo.findByCourseId(id);
 	        enrollmentRepo.deleteAll(enrollmentsToDelete);

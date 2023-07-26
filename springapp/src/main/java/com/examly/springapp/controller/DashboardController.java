@@ -4,6 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.examly.springapp.model.Admission;
+import com.examly.springapp.model.Course1;
+import com.examly.springapp.model.Enrollment;
+import com.examly.springapp.model.Student1;
+import com.examly.springapp.model.User;
+import com.examly.springapp.repository.AdmissionRepo;
+import com.examly.springapp.repository.CourseRepo1;
+import com.examly.springapp.repository.EnrollmentRepo;
+import com.examly.springapp.repository.StudentRepo1;
+import com.examly.springapp.repository.UserRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,13 +28,13 @@ public class DashboardController {
 
 	
 	@Autowired
-	private StudentRepo sturep;
+	private StudentRepo1 sturep;
 	
 	@Autowired
 	private AdmissionRepo admrep;
 	
 	@Autowired
-	private CourseRepo coursrep;
+	private CourseRepo1 coursrep;
 	
 	@Autowired
 	private EnrollmentRepo enrolrep;
@@ -33,9 +44,9 @@ public class DashboardController {
 	
 	@GetMapping
 	public Map<String,Long> getTotalCount(){
-		List<Student> stu = sturep.findAll();
+		List<Student1> stu = sturep.findAll();
 		List<Admission> adm = admrep.findAll();
-		List<Course> cours = coursrep.findAll();
+		List<Course1> cours = coursrep.findAll();
 		List<Enrollment> enrol = enrolrep.findAll();
 		List<User> user = userep.findAll();
 		List<Admission> accept = admrep.findByStatus("Accepted");

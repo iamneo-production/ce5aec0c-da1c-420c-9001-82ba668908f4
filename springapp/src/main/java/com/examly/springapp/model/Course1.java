@@ -1,9 +1,14 @@
 package com.examly.springapp.model;
 
-import jakarta.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
-@Table(name = "courses",schema = "demobackend")
+@Table(name = "courses_table",schema = "demobackend")
 public class Course1 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,7 +26,7 @@ private long id;
 	@Column(name = "Credits")
 	private String credits;
 
-	public Course(long id, String name, String description, String prerequisites, String credits) {
+	public Course1(long id, String name, String description, String prerequisites, String credits) {
 		this.id = id;
 		this.name = name;
 		this.description = description;
@@ -69,7 +74,7 @@ private long id;
 		this.credits = credits;
 	}
 
-	public Course() {
+	public Course1() {
 		
 	}
 
