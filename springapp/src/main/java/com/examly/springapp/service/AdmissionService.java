@@ -14,6 +14,17 @@ public class AdmissionService {
     public AdmissionService(AdmissionRepo admissionRepository) {
         this.admissionRepository = admissionRepository;
     }
+
+    public Admission createAdmission(Admission admission) {
+        return admissionRepository.save(admission);
+    }
+    public Admission getadmissionById(long id) {
+		return admissionRepository.findById(id).get();
+	}
+    public List<Admission> getAlladmissions() {
+        return admissionRepository.findAll();
+    }
+    
     public Admission updateAdmissionById(Long admId, Admission updatedAdmission) {
         // Step 4.1: Find the existing admission in the database
         Admission existingAdmission = admissionRepository.findById(admId)

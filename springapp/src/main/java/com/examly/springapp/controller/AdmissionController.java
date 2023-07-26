@@ -44,6 +44,49 @@ public class AdmissionController {
 		List<Admission> admission = admissionService.getAlladmissions();
 		return new ResponseEntity<>(admission, HttpStatus.OK);
 	}
+	@GetMapping("/all")
+	public List<Admission> getAllAdmissions() {
+		return admissionRepository.findAll();
+	}
+	@GetMapping("/{id}")
+	public ResponseEntity<Admission> getadmissionById(@PathVariable Long id) {
+		Optional<Admission> admissionOptional = admissionRepository.findById(id);
+		if (admissionOptional.isPresent()) {
+			Admission admission = admissionOptional.get();
+			return ResponseEntity.ok(admission);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@PostMapping
+	public ResponseEntity<Admission> createAdmission(@ModelAttribute Admission admission,
+			@RequestParam("documents") MultipartFile[] documents, @RequestParam("studentId") Long studentId) {
+		System.out.println("Received " + documents.length + " documents.");
+
+		Student student = studentRepo.findById(studentId)
+				.orElseThrow(() -> new RuntimeException("student not found with id: " + studentId));
+
+		// Set the agent for the property
+		admission.setStudent(student);
+
+		List<String> documentUrls = new ArrayList<>();
+
+		for (MultipartFile document : documents) {
+			try {
+				String fileName = mediaFileService.saveMediaFile(document);
+			//  String fileName = mediaFileService.saveFile(document);
+				documentUrls.add(fileName);
+			} catch (IOException e) {
+				return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+		}
+		admission.setRequiredDocuments(documentUrls);
+
+		Admission createdAdmission = admissionService.createAdmission(admission);
+		return new ResponseEntity<>(createdAdmission, HttpStatus.CREATED);
+
+	}
 
     @PutMapping("{id}")
 	public ResponseEntity<Admission> updatestatus(@PathVariable long id, @RequestBody Map<String, String> data) {
@@ -73,7 +116,7 @@ public class AdmissionController {
 			List<Enrollment> enrollmentsToDelete = enrollmentRepo.findByStudentId(id);
 			enrollmentRepo.deleteAll(enrollmentsToDelete);
 
-			// Finally, delete the student record studentRepo.delete(student);
+			// Finally, delete the student record
 			studentRepo.delete(student);
 
 			return ResponseEntity.ok(admissionRepository.findAll());
