@@ -53,11 +53,7 @@
 			<type>30</type>
 			<matcher>
 				<id>org.eclipse.core.resources.regexFilterMatcher</id>
-<<<<<<< HEAD
-				<arguments>node_modules|\.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
-=======
 				<arguments>node_modules|.git|__CREATED_BY_JAVA_LANGUAGE_SERVER__</arguments>
->>>>>>> 6671139cf99c63042b2d03815706254ff97e7b14
 			</matcher>
 		</filter>
 	</filteredResources>
