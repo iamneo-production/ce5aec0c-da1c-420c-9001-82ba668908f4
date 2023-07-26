@@ -1,3 +1,5 @@
+package com.examly.springapp.model;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,6 +30,7 @@ public class Student {
 
     public Student() {
     }
+
     public Student(String firstName, String lastName, String email, String password, String address,
             String phoneNumber) {
         this.firstName = firstName;
@@ -45,6 +48,7 @@ public class Student {
     public void setId(Long id) {
         this.id = id;
     }
+
     public String getFirstName() {
         return firstName;
     }
@@ -64,6 +68,7 @@ public class Student {
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
@@ -87,8 +92,8 @@ public class Student {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
 }
-    
