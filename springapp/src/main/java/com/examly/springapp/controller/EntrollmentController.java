@@ -61,4 +61,52 @@ public class EntrollmentController {
 		
 		return enroll;
 	}
+
+	@PutMapping("{id}")
+	public ResponseEntity<Enrollment> updateEnrollment(@PathVariable long id, @RequestBody long enroldet) {
+	    Enrollment enroll = enrolserv.getEnrolmentById(id);
+
+	    if (enroll == null) {
+	        return ResponseEntity.notFound().build();
+	    }
+
+//	    long courseId = Long.parseLong(enroldet.get("courseId")); // Assuming the key for course ID is "courseId" in the request body
+	    Course cour = couser.getCourseById(enroldet); // Assuming you have a method to retrieve the Course by its ID
+
+	    if (cour == null) {
+	        return ResponseEntity.badRequest().body(enroll);
+	    }
+
+	    enroll.setCourse(cour);
+
+	    enrolrep.save(enroll);
+
+	    return ResponseEntity.ok(enroll);
+	}
+
+	@PutMapping("/grade/{id}")
+	public ResponseEntity<Enrollment> updateGrade(@PathVariable long id,@RequestBody String grade){
+		Enrollment enroll = enrolserv.getEnrolmentById(id);
+		
+		if (enroll == null) {
+	        return ResponseEntity.notFound().build();
+	    }
+		enroll.setGrade(grade.substring(1, 2));
+		
+		enrolrep.save(enroll);
+		
+		return ResponseEntity.ok(enroll);
+	}
+	    @DeleteMapping("/{enrollId}")
+	    public ResponseEntity<String> deleteEnrollment(@PathVariable long enrollId) {
+	        Enrollment enroll = enrolserv.getEnrolmentById(enrollId);
+
+	        if (enroll == null) {
+	            return ResponseEntity.notFound().build();
+	        }
+
+	        enrolrep.delete(enroll);
+
+	        return ResponseEntity.ok("Enrollment with ID: " + enrollId + " has been deleted successfully.");
+	    }
 }
