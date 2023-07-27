@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const COURSE_REST_API = 'http://localhost:8080'
+const COURSE_REST_API = 'http://localhost:8080/ap'
 
 class CourseService{
   
@@ -14,17 +14,17 @@ class CourseService{
 
     getCourseById(courseId){
         const CourseId = courseId;
-        return axios.get(`http://localhost:8080/courses/${CourseId}`,courseId);
+        return axios.get(`http://localhost:8080/ap/courses/${CourseId}`,courseId);
     }
 
     updatecoursedata(courseId,course){
         const CourseId = courseId;
-        return axios.put(`http://localhost:8080/courses/${CourseId}`, courseId,course);
+        return axios.put(`http://localhost:8080/ap/courses/${CourseId}`, courseId,course);
     }
 
     deletecourse(id){
         const CourseId = id;
-        return axios.delete(`http://localhost:8080/courses/${CourseId}`, id);
+        return axios.delete(`http://localhost:8080/ap/courses/${CourseId}`, id);
     }
 }
 const vari =new CourseService();
