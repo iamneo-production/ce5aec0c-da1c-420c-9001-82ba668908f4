@@ -26,14 +26,13 @@ public class StudentService {
         return studentRepo.findAll();
     }
 
-    public Student getStudnetById(long id) {
+    public Student getStudentById(long id) {
 		return studentRepo.findById(id).get();
 	}
 
     public boolean loginUser(Student student) {
         Student user = studentRepo.findByEmailAndPassword(
                 student.getEmail(), student.getPassword());
-        return user !=null;
-    
+        return user != null;
     }
 }

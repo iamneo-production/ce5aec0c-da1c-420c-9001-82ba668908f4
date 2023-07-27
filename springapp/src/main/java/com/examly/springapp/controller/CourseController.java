@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Optional;
 
 import com.examly.springapp.model.Course;
-
+import com.examly.springapp.service.CourseService;
 import com.examly.springapp.repository.CourseRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,62 +21,63 @@ import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin("*")
 @RestController
-@RequestMapping("/courses")
 public class CourseController {
-
     @Autowired
-    private CourseRepo courep;
+	private CourseService courser;
 
-    @GetMapping
-    public List<Course> getAllCourses() {
-        return courep.findAll();
-    }
+	@Autowired
+	private CourseRepo courep;
 
-    @PostMapping
-    public ResponseEntity<Boolean> createcourse(@RequestBody Course course) {
-        courep.save(course);
+	public CourseController(CourseService courser){
+		this.courser=courser;
+	}
+	
+	@GetMapping("/courses")
+	public List<Course> getAllCourses() {
+		return courep.findAll();
+	}
 
-        return ResponseEntity.ok(true);
-    }
+	@PostMapping("/courses")
+	public ResponseEntity<Boolean> createcourse(@RequestBody Course course) {
+		courep.save(course);
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Course> updateCourseData(@PathVariable long id, @RequestBody Course courseDetails) {
-        Optional<Course> courseOptional = courep.findById(id);
-        if (courseOptional.isPresent()) {
-            Course course = courseOptional.get();
-            course.setName(courseDetails.getName());
-            course.setDescription(courseDetails.getDescription());
-            course.setPrerequisites(courseDetails.getPrerequisites());
-            course.setCredits(courseDetails.getCredits());
-            courep.save(course);
-            return ResponseEntity.ok(course);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
+		return ResponseEntity.ok(true);
+	}
+	
+	@PutMapping("/courses/{id}")
+	public ResponseEntity<Course> updatecoursedata(@PathVariable long id,@RequestBody Course coursedet) {
+		Course cors = courser.getCourseById(id);
+		cors.setName(coursedet.getName());
+		cors.setDescription(coursedet.getDescription());
+		cors.setPrerequisites(coursedet.getPrerequisites());
+		cors.setCredits(coursedet.getCredits());
+		
+		courep.save(cors);
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Course> getCourseById(@PathVariable long id) {
-        Optional<Course> courseOptional = courep.findById(id);
-        if (courseOptional.isPresent()) {
-            Course course = courseOptional.get();
-            return ResponseEntity.ok(course);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<List<Course>> deletecourse(@PathVariable long id) {
-        Optional<Course> courseOptional = courep.findById(id);
-        if (courseOptional.isPresent()) {
-            Course course = courseOptional.get();
-            courep.delete(course);
-            List<Course> courses = courep.findAll();
-            return ResponseEntity.ok(courses);
-        } else {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
+		return ResponseEntity.ok(cors);
+	}
+	
+	@GetMapping("/courses/{id}")
+	public ResponseEntity<Course> getCourseById(@PathVariable long id){
+		Optional<Course> courseOptional = courep.findById(id);
+		if (courseOptional.isPresent()) {
+			Course course = courseOptional.get();
+			return ResponseEntity.ok(course);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
+	
+	@DeleteMapping("/courses/{id}")
+	public ResponseEntity<List<Course>> deletecourse(@PathVariable long id) {
+		Optional<Course> courseOptional = courep.findById(id);
+		if (courseOptional.isPresent()) {
+			Course course = courseOptional.get();
+			courep.delete(course);
+			List<Course> courses = courep.findAll();
+			return ResponseEntity.ok(courses);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
+	}
 }

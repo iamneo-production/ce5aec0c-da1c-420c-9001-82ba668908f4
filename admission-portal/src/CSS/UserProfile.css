@@ -1,0 +1,71 @@
+.container{
+    margin-top: 50px;
+  }
+    .main{
+      padding:15px;
+      font-family:Arial,Helvetica,sans-serif;
+    }
+    .topbar{
+      background-color:teal;
+      overflow:hidden;
+    }
+    .topbar a{
+      float:right;
+      color:whitesmoke;
+      text-align:center;
+      padding:20px,26px;
+      text-decoration:none;
+      font-size:26px;
+    }
+    .stuentname{
+      font-weight: 700;
+    }
+    .sidebar{
+      background-color:#710d71;
+      color:white;
+      height:100%;
+    }
+    .sidebar a{
+      margin: left 10px;
+      display:block;
+      color:white;
+      padding-bottom:10px;
+      font-size:30px;
+      text-decoration:none;
+    }
+    .card{
+      position: relative;
+      display: flex;
+      flex-direction: column;
+    }
+    .content{
+      background-color: whitesmoke;
+    
+    }
+    .Add{
+      font-size: 30px;
+      cursor: pointer;
+    }
+    .logouttext
+    {
+      font-size: 30px;
+      cursor: pointer;
+  
+    }
+    .logouttext:hover
+    {
+  
+      box-shadow:0 0 12px rgb(255, 255, 255);
+      border-radius: 10px;
+     
+    }
+    .btn{
+      outline: none;
+      margin-right: 3px;
+    }
+  
+    .changebtn{
+      outline: none;
+      margin-right: 3px;
+    }
+  
