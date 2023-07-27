@@ -108,28 +108,6 @@ function ListEnrollment() {
 
   const submit = (e, enrolid) => {
     e.preventDefault();
-<<<<<<< HEAD
-    if(whichupdate === 'Course'){
-    EnrollmentService.updateEnrollment(enrolid, updatedetails)
-      .then((res) => {
-        setUpdate(true);
-        history('/ListEnrollment');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
-    else if(whichupdate === 'Grade'){
-      EnrollmentService.updateGrade(enrolid,updatedetails).then((rep) => {
-        setUpdate(true);
-        history('/ListEnrollment');
-      }).catch((error) => {
-        console.log("Error while updating grade",error);
-      })
-    }
-
-      setWhichupdate('null')
-=======
     if (whichupdate === 'Course') {
       EnrollmentService.updateEnrollment(enrolid, updatedetails)
         .then((res) => {
@@ -151,7 +129,6 @@ function ListEnrollment() {
     }
 
     setWhichupdate('null');
->>>>>>> Project-Workspace-YamsaniVarun22
   };
 
   const DeleteEnrollment = (id) => {
@@ -316,117 +293,11 @@ function ListEnrollment() {
                     <td>
                       {enrol.student.firstName} {enrol.student.lastName}
                     </td>
-<<<<<<< HEAD
-                    {update ? (
-                      <td>{enrol.course.name}</td>
-                    ) : enid === enrol.enrollId ? (
-                      whichupdate === 'Course' ?(
-                      <td className='col-sm-2'>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          name="coursename"
-                          onChange={(e) => setUpdatedetails(e.target.value)}
-                        >
-                          <option value="">Select Course</option>
-                          {courses.map((cor) => (
-                            <option key={cor.id} value={cor.id}>
-                              {cor.name}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                      ):(
-                        <td>{enrol.course.name}</td>
-                      )
-                    ) : (
-                      <td>{enrol.course.name}</td>
-                    )}
-                    <td>{enrol.student.email}</td>
-                    {update ? (
-                      <td className='text-center'><b>{enrol.grade}</b></td>
-                    ) : enid === enrol.enrollId ? (
-                      whichupdate === 'Grade' ?(
-                      <td>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          name="grade"
-                          onChange={(e) => setUpdatedetails(e.target.value)}
-                        >
-                          <option value="">Select Grade</option>
-                          {Grade.map((grad,index) => (
-                            <option key={index} value={grad}>
-                              {grad}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                      ):(
-                        <td className='text-center'><b>{enrol.grade}</b></td>
-                      )
-                    ) : (
-                      <td className='text-center'><b>{enrol.grade}</b></td>
-                    )}
-                    <td>
-                      {update ? (
-                        <>
-                          <button
-                            className="btn btn-secondary mx-2"
-                            onClick={() => updatefunction(enrol.enrollId)}
-                          >
-                            Update
-                          </button>
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => DeleteEnrollment(enrol.enrollId)}
-                          >
-                            Delete
-                          </button>
-                        </>
-                      ) : (
-                        whichupdate === 'null' && enid === enrol.enrollId ? (
-                          <>
-                          <select
-                              className="form-select"
-                              aria-label="Default select example"
-                              name="whichupdate"
-                              onChange={(e) => setWhichupdate(e.target.value)}
-                            >
-                              <option value="">Select Update</option>
-                              {updatelist.map((list, index) => (
-                                <option key={index} value={list}>
-                                  {list}
-                                </option>
-                              ))}
-                            </select>
-                            <button className='btn btn-danger' onClick={cancel}>Cancel</button>
-                          </>
-                        ) :enid === enrol.enrollId  ? (
-                          
-                          <>
-                            <button
-                              className="btn btn-success mx-1"
-                              onClick={(e) => submit(e, enrol.enrollId)}
-                            >
-                              Submit
-                            </button>
-                            <button
-                              className="btn btn-danger"
-                              onClick={cancel}
-                            >
-                              Cancel
-                            </button>
-                          </>
-                        ):(null)
-                      )}
-=======
                     <td>{renderCourseContent(enrol)}</td>
                     <td>{enrol.student.email}</td>
                     {renderGradeContent(enrol)}
                     <td>
                       {renderActionContent(enrol)}
->>>>>>> Project-Workspace-YamsaniVarun22
                     </td>
                   </tr>
                 );
