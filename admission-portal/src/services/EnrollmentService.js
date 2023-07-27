@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const ENROLL_REST_API = 'http://localhost:8080/admin/enrollments';
+const ENROLL_REST_API = 'https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments';
 
 class EnrollmentService {
   getAllEnrollments() {
