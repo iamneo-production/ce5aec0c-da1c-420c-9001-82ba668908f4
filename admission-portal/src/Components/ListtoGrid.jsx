@@ -24,6 +24,9 @@ const ListtoGrid = () => {
       });
   };
 
+  const filterCourses = (course) => {
+    return search === '' || course.name.toLowerCase().includes(search.toLowerCase());
+  };
 
   return (
     <div className="main-container">
@@ -35,7 +38,7 @@ const ListtoGrid = () => {
         <Form>
           <InputGroup className="my-3">
             <Form.Control
-            className='search_placeholder'
+              className='search_placeholder'
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search course"
             />
@@ -45,18 +48,7 @@ const ListtoGrid = () => {
 
       <div className="card-container">
         {courses
-          .filter((course) => {
-            if (search === '') {
-              return true;
-            } else if (
-              course.name
-                .toLowerCase()
-                .includes(search.toLowerCase())
-            ) {
-              return true;
-            }
-            return false;
-          })
+          .filter(filterCourses)
           .map((course) => (
             <Card key={course.id} className="card-item" >
               <Card.Body className="text">
