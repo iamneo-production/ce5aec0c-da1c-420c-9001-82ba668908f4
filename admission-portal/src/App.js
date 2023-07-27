@@ -18,7 +18,7 @@ import AdminNavbar from './Components/Header';
 import Header from './Components/Header';
 import AddStudentComponent from './Components/AddStudentComponent';
 import AddCourses from "./Components/AddCourses";
-import ListCourses from "./Components/ListCourses";
+import ListCourses from "./Components/ListCourse";
 import ManageApplications from "./Components/ManageApplications";
 import ApplicationReport from "./Components/ApplicationReport";
 import ListStudentComponent from './Components/ListStudentComponent';
