@@ -71,7 +71,7 @@ public class StudentController {
 
     @DeleteMapping("/students/{id}")
     public ResponseEntity<List<Student>> deleteStudentById(@PathVariable Long id) {
-        Student student = studentService.getStudnetById(id);
+        Student student = studentService.getStudentById(id);
         studentRepo.delete(student);
 
         return ResponseEntity.ok(studentRepo.findAll());
@@ -86,6 +86,5 @@ public class StudentController {
             return new ResponseEntity<>("Invalid email or Password", HttpStatus.UNAUTHORIZED);
         }
     }
-
 
 }
