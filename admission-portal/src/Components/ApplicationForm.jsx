@@ -71,7 +71,6 @@ const ApplicationForm = () => {
     for (const document of admissionData.documents) {
       formData.append('documents', document);
     }
-
     try {
       await axios.post('http://localhost:8080/admissions', formData, {
         headers: {
