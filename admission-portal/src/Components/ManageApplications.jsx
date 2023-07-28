@@ -3,10 +3,7 @@ import ApplicationService from "../services/ApplicationService";
 import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 
-
-
 const ManageApplications = () => {
-
   const [applications, setApplications] = useState([]);
   const [feedback, setFeedback] = useState("");
   const [status, setStatus] = useState("");
@@ -55,7 +52,7 @@ const ManageApplications = () => {
   const cancel = () => {
     setShow(true);
     setFeedback("");
-    console.log(applications)
+    console.log(applications);
   };
 
   return (
@@ -88,9 +85,8 @@ const ManageApplications = () => {
                       </Link>
                     </Button>
                   </td>
-
                   <td>
-                    {show ? (
+                    {show && (
                       <>
                         <button
                           className="btn btn-success"
@@ -106,32 +102,31 @@ const ManageApplications = () => {
                           Reject
                         </button>
                       </>
-                    ) : (
-                      showid === app.admId && (
-                        <>
-                          <textarea
-                            type="text"
-                            placeholder="Enter Feedback"
-                            name="feedback"
-                            className="form-control"
-                            value={feedback}
-                            onChange={handleChange}
-                          ></textarea>
-                          <button
-                            className="btn btn-primary"
-                            onClick={() => Submit(app.admId)}
-                          >
-                            Submit
-                          </button>
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => cancel()}
-                            style={{ marginLeft: "10px" }}
-                          >
-                            Cancel
-                          </button>
-                        </>
-                      )
+                    )}
+                    {show === false && showid === app.admId && (
+                      <>
+                        <textarea
+                          type="text"
+                          placeholder="Enter Feedback"
+                          name="feedback"
+                          className="form-control"
+                          value={feedback}
+                          onChange={handleChange}
+                        ></textarea>
+                        <button
+                          className="btn btn-primary"
+                          onClick={() => Submit(app.admId)}
+                        >
+                          Submit
+                        </button>
+                        <button
+                          className="btn btn-danger"
+                          onClick={() => cancel()}
+                          style={{ marginLeft: "10px" }}
+                        >
+                          Cancel
+                        </button>
+                      </>
                     )}
                   </td>
                 </tr>

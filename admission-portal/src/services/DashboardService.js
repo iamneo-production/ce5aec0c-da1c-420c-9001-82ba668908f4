@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const DASHBOARD_REST_API = 'http://localhost:8080/admin/dashboard';
+const DASHBOARD_REST_API = 'https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/dashboard';
 
 class DashboardService {
 
