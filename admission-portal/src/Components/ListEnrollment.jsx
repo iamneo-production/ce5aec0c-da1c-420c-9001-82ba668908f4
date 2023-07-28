@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 import EnrollmentService from '../services/EnrollmentService';
 import CourseService from '../services/MCourseService';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link ,useNavigate} from 'react-router-dom';
 
 // Create separate components for the parts that vary based on the condition
 
@@ -67,10 +67,20 @@ function ListEnrollment() {
   const [enid, setEnid] = useState('');
   const [whichupdate, setWhichupdate] = useState('null');
 
-  const updatelist = ['Course', 'Grade'];
+  const updatelist = [
+    'Course',
+    'Grade',
+  ];
 
-  const Grade = ['A', 'B', 'C', 'D', 'E', 'F'];
-  const history = useNavigate();
+  const Grade = [
+    'A',
+    'B',
+    'C',
+    'D',
+    'E',
+    'F',
+  ];
+  const history =useNavigate();
 
   useEffect(() => {
     EnrollmentService.getAllEnrollments()
@@ -93,7 +103,7 @@ function ListEnrollment() {
   const updatefunction = (id) => {
     setEnid(id);
     setUpdate(false);
-    history(`/ListEnrollment/${id}`);
+    history(`/ListEnrollment/${id}`)
   };
 
   const submit = (e, enrolid) => {
@@ -137,10 +147,10 @@ function ListEnrollment() {
       });
   };
 
-  const cancel = () => {
-    setUpdate(true);
-    setWhichupdate('null');
-  };
+  const cancel = () =>{
+    setUpdate(true)
+    setWhichupdate('null')
+  }
 
   const renderCourseContent = (enrol) => {
     if (update) {
@@ -257,7 +267,7 @@ function ListEnrollment() {
           </div>
         </div>
         <table className="table table-bordered table-striped">
-          <thead>
+        <thead>
             <tr>
               <th>Enrol_Id</th>
               <th>Student Name</th>
@@ -272,7 +282,9 @@ function ListEnrollment() {
               .filter((enrol) => {
                 return search.toLowerCase() === ''
                   ? enrol
-                  : enrol.course.name.toLowerCase().includes(search.toLowerCase());
+                  : enrol.course.name
+                      .toLowerCase()
+                      .includes(search.toLowerCase());
               })
               .map((enrol) => {
                 return (

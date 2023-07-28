@@ -13,8 +13,6 @@ import ContactUs from './Components/ContactUs';
 import Error from './Components/Error';
 import ListtoGrid from './Components/ListtoGrid';
 import CourseDetails from './Components/CourseDetails';
-import StudentNavbar from './Components/Header';
-import AdminNavbar from './Components/Header';
 import Header from './Components/Header';
 import AddStudentComponent from './Components/AddStudentComponent';
 import AddCourses from "./Components/AddCourses";
@@ -63,7 +61,7 @@ function App() {
               <>
               <Route path="/" element={<StudentDashboard />} />
                 <Route path="/StudentDashboard" element={<StudentDashboard />} />
-                <Route path="/StudentNavbar" element={<StudentNavbar />} />
+                
                 <Route path="/UserProfile" Component={UserProfile} />
                 <Route path="/ApplicationForm" Component={ApplicationForm} />
                 <Route path="/ApplicationStatus" Component={ApplicationStatus} />
@@ -77,7 +75,7 @@ function App() {
 
           <Routes>
             <Route path="/AdminDashboard" element={<AdminDashboard />} />
-            <Route path="/AdminNavbar" element={<AdminNavbar />} />
+           
             <Route path="/listcourses" Component={ListCourses} />
             <Route path="/add-course" Component={AddCourses} />
             <Route path="/add-course/:id" Component={AddCourses} />

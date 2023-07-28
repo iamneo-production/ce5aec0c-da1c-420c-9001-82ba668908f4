@@ -28,7 +28,7 @@ const ApplicationForm = () => {
 
   const getSingleUserData = (storedId) => {
     axios
-      .get(`http://localhost:8080/students/${storedId}`)
+      .get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`)
       .then((response) => {
         setUserData(response.data);
       })
@@ -72,7 +72,7 @@ const ApplicationForm = () => {
       formData.append('documents', document);
     }
     try {
-      await axios.post('http://localhost:8080/admissions', formData, {
+      await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
