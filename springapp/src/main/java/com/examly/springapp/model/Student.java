@@ -10,6 +10,18 @@ import org.springframework.stereotype.Component;
 @Table(name = "student", schema = "admissionportal")
 @Entity
 @Component
+package com.examly.springapp.model;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import org.springframework.stereotype.Component;
+
+@Table(name = "student", schema = "admissionportal")
+@Entity
+@Component
 public class Student {
     @Id
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -92,6 +104,11 @@ public class Student {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+}
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
