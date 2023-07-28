@@ -80,7 +80,7 @@ function DefaultHeader() {
       const getAdmissionDetails = async () => {
         const studentId = Number(localStorage.getItem('userId'));
         try {
-          const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
+          const response = await axios.get('https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/admissions');
       const allAdmissions = response.data;
   
       const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
@@ -92,7 +92,7 @@ function DefaultHeader() {
           }
           else{
             const admissionId = foundAdmission.admId;
-            const response1 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionId}`);
+            const response1 = await axios.get(`https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/admissions/${admissionId}`);
             const currentstatus = response1.data.status;
             console.log(currentstatus);
             if(currentstatus==='Pending')

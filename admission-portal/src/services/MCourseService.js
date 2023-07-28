@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const COURSE_REST_API = 'https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap'
+const COURSE_REST_API = 'https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/ap'
 
 class CourseService{
   
@@ -14,17 +14,17 @@ class CourseService{
 
     getCourseById(courseId){
         const CourseId = courseId;
-        return axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/courses/${CourseId}`,courseId);
+        return axios.get(`https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/ap/courses/${CourseId}`,courseId);
     }
 
     updatecoursedata(courseId,course){
         const CourseId = courseId;
-        return axios.put(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/courses/${CourseId}`, courseId,course);
+        return axios.put(`https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/ap/courses/${CourseId}`, courseId,course);
     }
 
     deletecourse(id){
         const CourseId = id;
-        return axios.delete(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/courses/${CourseId}`, id);
+        return axios.delete(`https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/ap/courses/${CourseId}`, id);
     }
 }
 const vari =new CourseService();

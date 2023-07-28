@@ -48,7 +48,7 @@ const AdminLogin = () => {
         password: formData.password
       };
 
-      const response = await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/user/login', user); // Send the user object
+      const response = await axios.post('https://8080-ccffaadabacdefcffebbdadbedabbffaabaebdcec.project.examly.io/user/login', user); // Send the user object
       // Handle successful login
       console.log(response.data);
       setUser('admin');
