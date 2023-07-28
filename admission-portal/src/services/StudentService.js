@@ -5,31 +5,31 @@ class StudentService{
 
    getStudents(){
 
-     return axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students`);
+     return axios.get(`https://8080-faffbbafcebafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students`);
 
    }
 
    getStudentById(id){
 const userId = id;
-  return axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${userId}`);
+  return axios.get(`https://8080-faffbbafcebafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${userId}`);
 
    }
 
    updateStudent(id,student){
     const userId = id;
-    return axios.put(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${userId}`,student)
+    return axios.put(`https://8080-faffbbafcebafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${userId}`,student)
 
   }
 
   deleteStudent(id) {
     const userId = id;
-    return axios.delete(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${userId}`);
+    return axios.delete(`https://8080-faffbbafcebafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${userId}`);
 
   }
 
   addStudent(student) {
 
-    return axios.post(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students`,student);
+    return axios.post(`https://8080-faffbbafcebafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students`,student);
 
   }
 
