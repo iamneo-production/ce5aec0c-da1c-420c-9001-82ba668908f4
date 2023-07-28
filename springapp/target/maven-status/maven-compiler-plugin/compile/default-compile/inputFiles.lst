@@ -1,5 +1,5 @@
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AdmissionController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/EntrollmentController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/AdmissionController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Student.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Enrollment.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/CourseService.java
@@ -11,15 +11,15 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/User.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/UserController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Course1.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/CourseRepo1.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/StudentController1.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/CourseRepo.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/CourseRepo1.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/StudentController.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/CourseRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Admission.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/CourseController1.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/EnrollmentService.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/AdmissionRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/AdmissionService.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/AdmissionRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/SpringappApplication.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/exception/ResourceNotFoundException.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/EnrollmentRepo.java
