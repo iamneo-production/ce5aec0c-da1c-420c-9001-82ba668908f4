@@ -40,12 +40,12 @@ public class MediaFileService {
         }
 
         // Upload the image file to Cloudinary with the appropriate resource type
-        String mediaUrl = cloudinary.uploader()
+        return cloudinary.uploader()
                 .upload(file.getBytes(), ObjectUtils.asMap("public_id", originalFilename))
                 .get("url").toString();
 
         // Return the public URL of the uploaded image file
-        return mediaUrl;
+     
     }
 
 }
