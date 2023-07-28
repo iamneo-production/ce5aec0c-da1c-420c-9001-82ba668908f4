@@ -81,7 +81,7 @@ function RegisterForm({ onRegistrationSuccess, onSignInClick }) {
     event.preventDefault();
 
     try {
-      const response = await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students', formData);
+      const response = await axios.post('https://8080-effbecaeaabcafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students', formData);
       // Handle successful response
       console.log(response.data);
       setShowAlert(true);
