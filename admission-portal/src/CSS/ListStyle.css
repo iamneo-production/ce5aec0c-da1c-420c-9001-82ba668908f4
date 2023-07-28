@@ -1,0 +1,124 @@
+:root{
+    --mainColor:#8B008B;
+}
+header{
+    background-color: var(--mainColor);
+}
+.container{
+    width:95%;
+    /*background-color: orange;*/
+    margin:0 auto;
+    max-width: 1200px;
+    
+}
+/* .imagescarousel{
+    width: max-content;
+    height: 100;
+} */
+.container-flex{
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+}
+.logo{
+    width:70px;
+    height: 75px;
+    padding:.5em 0;
+}
+.logocontainer
+{
+    display: flex;
+    align-items: center;
+}
+.logocontainer:hover{
+    cursor: pointer;
+}
+.logoText {
+   
+    font-size: 25px;
+    font-weight: 700;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-left: 10px;
+    align-self: center;
+    color: white;
+  }
+  
+.list{
+    display:flex;
+    
+}
+.listItem{
+     margin-left: 3em;
+     padding: 10px;
+     color:white;
+    text-decoration: none;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+}
+.listItem:hover {
+    background-color: white;
+    color: black;
+  }
+.activeItem{
+    color: aqua;
+    border-bottom: 1em double #fff;
+}
+/* font-family: 'Castoro Titling', cursive;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Raleway', sans-serif; */
+.paraheading
+{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    color: #8B008B;
+    margin-bottom: 10px;
+}
+.studentpara
+{
+    font-size: 25px;
+    font-family: 'Raleway', sans-serif; 
+    margin-bottom: 20px;
+    text-align:justify;
+}
+.carousel
+{
+    margin-bottom: 20px;
+}
+.applybutton
+{
+    margin-bottom: 30px;
+}
+@media screen and (max-width:1100px){
+    .studentpara
+    {
+        font-size: 20px;
+        font-family: 'Raleway', sans-serif; 
+        margin-bottom: 20px;
+        text-align:justify;
+    }
+}
+@media screen and (max-width:786px){
+    html{
+        font-size:13px;
+    }
+    .container-flex{
+        flex-direction:column;
+    }
+    .studentpara
+{
+    font-size: 15px;
+    font-family: 'Raleway', sans-serif; 
+    margin-bottom: 20px;
+    text-align:justify;
+}
+    
+}
+@media screen and (max-width:568px){
+    html{
+        font-size:11px;
+    }
+    .list{
+        flex-direction: column;
+    }
+}
