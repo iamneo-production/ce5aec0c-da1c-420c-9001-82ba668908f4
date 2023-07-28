@@ -5,8 +5,8 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/CourseService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/CourseService1.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/CourseController.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/DashboardController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/StudentService1.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/DashboardController.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/StudentRepo.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/User.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/controller/UserController.java
@@ -26,7 +26,7 @@
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/StudentRepo1.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Student1.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/model/Course.java
-/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/config/MediaFileService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/StudentService.java
+/home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/config/MediaFileService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/service/UserService.java
 /home/coder/project/workspace/springapp/src/main/java/com/examly/springapp/repository/UserRepo.java
