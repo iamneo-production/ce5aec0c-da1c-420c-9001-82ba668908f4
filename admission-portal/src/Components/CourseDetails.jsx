@@ -29,7 +29,7 @@ const CourseDetails = () => {
           return;
         }
       try {
-        const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
+        const response = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admissions');
     const allAdmissions = response.data;
     console.log(studentId);
     const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
@@ -42,7 +42,7 @@ const CourseDetails = () => {
         else{
           const admissionId = foundAdmission.admId; // Assuming admission object has an 'id' property
           console.log(admissionId);
-          const response3 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionId}`);
+          const response3 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admissions/${admissionId}`);
           console.log(response3.data);
           const currentstatus = response3.data.status;
           console.log(currentstatus);
@@ -53,7 +53,7 @@ const CourseDetails = () => {
           }
           else if(currentstatus==='Accepted')
           {
-            const response1 = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments');
+            const response1 = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments');
     const allenrollments = response1.data;
     const foundenrollment = allenrollments.find(enrollment => enrollment.student.id === studentId);
     if(!foundenrollment){
@@ -99,7 +99,7 @@ const CourseDetails = () => {
       };
 
       // Make the API call to enroll the student in the course
-      const response = await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments', enrollmentData);
+      const response = await axios.post('https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments', enrollmentData);
 
       // Handle the response, show success message or perform other actions
       console.log('Enrollment successful:', response.data);

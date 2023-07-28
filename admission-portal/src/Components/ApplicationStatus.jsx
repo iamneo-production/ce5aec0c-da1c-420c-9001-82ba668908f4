@@ -13,7 +13,7 @@ const ApplicationStatus = ({ admissionId }) => {
     // Fetch the admission data by ID
     const fetchAdmission = async () => {
       const studentId = Number(localStorage.getItem('userId'));
-      const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
+      const response = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admissions');
       const allAdmissions = response.data;
       const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
       
@@ -22,13 +22,13 @@ const ApplicationStatus = ({ admissionId }) => {
         console.log("status is", foundAdmission.status);
 
         try {
-          const response3 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionIds}`);
+          const response3 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admissions/${admissionIds}`);
           setStudent(response3.data.student);
           setcStatus(foundAdmission.status);
           setFeedBack(foundAdmission.feedback);
 
           // Fetch enrolled course data
-          const response1 = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments');
+          const response1 = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments');
           const allenrollments = response1.data;
           console.log("allenrollmets :",allenrollments);
           const foundenrollment = allenrollments.find(enrollment => enrollment.student.id === studentId);
@@ -39,7 +39,7 @@ const ApplicationStatus = ({ admissionId }) => {
             console.log("Enrolled Course ID:", enrollmentId);
 
             // Fetch enrolled course details by enrollment ID
-            const response2 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments/${enrollmentId}`);
+            const response2 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments/${enrollmentId}`);
             const enrolledCourseData = response2.data;
             console.log("enrolledCourseData :", enrolledCourseData);
             setEnrolledCourse(enrolledCourseData);
