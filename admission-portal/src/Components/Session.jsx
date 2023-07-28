@@ -31,6 +31,29 @@ function Session() {
     }
   }, [showRegisterSuccess]);
 
+  const renderContent = () => {
+    if (showLogin) {
+      return <Login onSignUpClick={handleRegisterClick} />;
+    } else {
+      if (showRegisterSuccess) {
+        return (
+          <Container>
+            <div className="text-center">
+              <h4>Thanks for registering. Now you will be redirected to the Login page!</h4>
+            </div>
+          </Container>
+        );
+      } else {
+        return (
+          <Register
+            onRegistrationSuccess={handleRegistrationSuccess}
+            onSignInClick={handleLoginClick}
+          />
+        );
+      }
+    }
+  };
+
   return (
     <div className="divmodel modal show" style={{ display: 'block', position: 'initial' }}>
       <Modal.Dialog show={true} backdrop="static" keyboard={false} centered className="modeldio">
@@ -48,21 +71,7 @@ function Session() {
         </Modal.Header>
 
         <Modal.Body className="model-center">
-          {showLogin ? (
-            <Login onSignUpClick={handleRegisterClick} />
-          ) : (
-            <>
-              {showRegisterSuccess ? (
-                <Container>
-                  <div className="text-center">
-                    <h4>Thanks for registering. Now you will be redirected to the Login page!</h4>
-                  </div>
-                </Container>
-              ) : (
-                <Register onRegistrationSuccess={handleRegistrationSuccess} onSignInClick={handleLoginClick} />
-              )}
-            </>
-          )}
+          {renderContent()}
         </Modal.Body>
       </Modal.Dialog>
     </div>

@@ -1,8 +1,7 @@
 import React, { useEffect, useState,useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import CourseService from '../services/CourseService';
 import { Card} from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
 import '../CSS/CourseStyle.css';
 import axios from 'axios';
 import { UserContext } from '../services/UserProvider';
@@ -30,7 +29,7 @@ const CourseDetails = () => {
           return;
         }
       try {
-        const response = await axios.get('http://localhost:8080/admissions');
+        const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
     const allAdmissions = response.data;
     console.log(studentId);
     const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
@@ -43,7 +42,7 @@ const CourseDetails = () => {
         else{
           const admissionId = foundAdmission.admId; // Assuming admission object has an 'id' property
           console.log(admissionId);
-          const response3 = await axios.get(`http://localhost:8080/admissions/${admissionId}`);
+          const response3 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionId}`);
           console.log(response3.data);
           const currentstatus = response3.data.status;
           console.log(currentstatus);
@@ -54,7 +53,7 @@ const CourseDetails = () => {
           }
           else if(currentstatus==='Accepted')
           {
-            const response1 = await axios.get('http://localhost:8080/admin/enrollments');
+            const response1 = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments');
     const allenrollments = response1.data;
     const foundenrollment = allenrollments.find(enrollment => enrollment.student.id === studentId);
     if(!foundenrollment){
@@ -67,7 +66,7 @@ const CourseDetails = () => {
           }
           else if(currentstatus==='Rejected')
           {
-            alert('Your application process is not yet finished');
+            alert('Your application is Rejected. See the feedback in status');
             navigate('/ApplicationStatus');
           }
         }
@@ -100,7 +99,7 @@ const CourseDetails = () => {
       };
 
       // Make the API call to enroll the student in the course
-      const response = await axios.post('http://localhost:8080/admin/enrollments', enrollmentData);
+      const response = await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments', enrollmentData);
 
       // Handle the response, show success message or perform other actions
       console.log('Enrollment successful:', response.data);
