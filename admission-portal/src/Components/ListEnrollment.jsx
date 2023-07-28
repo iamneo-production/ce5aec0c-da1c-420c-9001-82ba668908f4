@@ -3,6 +3,61 @@ import EnrollmentService from '../services/EnrollmentService';
 import CourseService from '../services/MCourseService';
 import { Link ,useNavigate} from 'react-router-dom';
 
+// Create separate components for the parts that vary based on the condition
+
+const UpdateCourseComponent = ({ courses, setUpdatedetails }) => (
+  <td className='col-sm-2'>
+    <select
+      className="form-select"
+      aria-label="Default select example"
+      name="coursename"
+      onChange={(e) => setUpdatedetails(e.target.value)}
+    >
+      <option value="">Select Course</option>
+      {courses.map((cor) => (
+        <option key={cor.id} value={cor.id}>
+          {cor.name}
+        </option>
+      ))}
+    </select>
+  </td>
+);
+
+const UpdateGradeComponent = ({ Grade, setUpdatedetails }) => (
+  <td>
+    <select
+      className="form-select"
+      aria-label="Default select example"
+      name="grade"
+      onChange={(e) => setUpdatedetails(e.target.value)}
+    >
+      <option value="">Select Grade</option>
+      {Grade.map((grad, index) => (
+        <option key={index} value={grad}>
+          {grad}
+        </option>
+      ))}
+    </select>
+  </td>
+);
+
+const DefaultComponent = ({ enrol, updatefunction, DeleteEnrollment }) => (
+  <>
+    <button
+      className="btn btn-secondary mx-2"
+      onClick={() => updatefunction(enrol.enrollId)}
+    >
+      Update
+    </button>
+    <button
+      className="btn btn-danger"
+      onClick={() => DeleteEnrollment(enrol.enrollId)}
+    >
+      Delete
+    </button>
+  </>
+);
+
 function ListEnrollment() {
   const [enrollments, setEnrollments] = useState([]);
   const [courses, setCourses] = useState([]);
@@ -53,26 +108,27 @@ function ListEnrollment() {
 
   const submit = (e, enrolid) => {
     e.preventDefault();
-    if(whichupdate === 'Course'){
-    EnrollmentService.updateEnrollment(enrolid, updatedetails)
-      .then((res) => {
-        setUpdate(true);
-        history('/ListEnrollment');
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-    }
-    else if(whichupdate === 'Grade'){
-      EnrollmentService.updateGrade(enrolid,updatedetails).then((rep) => {
-        setUpdate(true);
-        history('/ListEnrollment');
-      }).catch((error) => {
-        console.log("Error while updating grade",error);
-      })
+    if (whichupdate === 'Course') {
+      EnrollmentService.updateEnrollment(enrolid, updatedetails)
+        .then((res) => {
+          setUpdate(true);
+          history('/ListEnrollment');
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    } else if (whichupdate === 'Grade') {
+      EnrollmentService.updateGrade(enrolid, updatedetails)
+        .then((rep) => {
+          setUpdate(true);
+          history('/ListEnrollment');
+        })
+        .catch((error) => {
+          console.log("Error while updating grade", error);
+        });
     }
 
-      setWhichupdate('null')
+    setWhichupdate('null');
   };
 
   const DeleteEnrollment = (id) => {
@@ -95,6 +151,99 @@ function ListEnrollment() {
     setUpdate(true)
     setWhichupdate('null')
   }
+
+  const renderCourseContent = (enrol) => {
+    if (update) {
+      return enrol.course.name;
+    } else {
+      if (enid === enrol.enrollId) {
+        if (whichupdate === 'Course') {
+          return (
+            <UpdateCourseComponent
+              courses={courses}
+              setUpdatedetails={setUpdatedetails}
+            />
+          );
+        } else {
+          return enrol.course.name;
+        }
+      } else {
+        return enrol.course.name;
+      }
+    }
+  };
+
+  const renderGradeContent = (enrol) => {
+    if (update) {
+      return <td className='text-center'><b>{enrol.grade}</b></td>;
+    } else {
+      if (enid === enrol.enrollId) {
+        if (whichupdate === 'Grade') {
+          return (
+            <UpdateGradeComponent
+              Grade={Grade}
+              setUpdatedetails={setUpdatedetails}
+            />
+          );
+        } else {
+          return <td className='text-center'><b>{enrol.grade}</b></td>;
+        }
+      } else {
+        return <td className='text-center'><b>{enrol.grade}</b></td>;
+      }
+    }
+  };
+
+  const renderActionContent = (enrol) => {
+    if (update) {
+      return (
+        <DefaultComponent
+          enrol={enrol}
+          updatefunction={updatefunction}
+          DeleteEnrollment={DeleteEnrollment}
+        />
+      );
+    } else {
+      if (whichupdate === 'null' && enid === enrol.enrollId) {
+        return (
+          <>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              name="whichupdate"
+              onChange={(e) => setWhichupdate(e.target.value)}
+            >
+              <option value="">Select Update</option>
+              {updatelist.map((list, index) => (
+                <option key={index} value={list}>
+                  {list}
+                </option>
+              ))}
+            </select>
+            <button className='btn btn-danger' onClick={cancel}>
+              Cancel
+            </button>
+          </>
+        );
+      } else if (enid === enrol.enrollId) {
+        return (
+          <>
+            <button
+              className="btn btn-success mx-1"
+              onClick={(e) => submit(e, enrol.enrollId)}
+            >
+              Submit
+            </button>
+            <button className="btn btn-danger" onClick={cancel}>
+              Cancel
+            </button>
+          </>
+        );
+      } else {
+        return null;
+      }
+    }
+  };
 
   return (
     <div>
@@ -144,109 +293,11 @@ function ListEnrollment() {
                     <td>
                       {enrol.student.firstName} {enrol.student.lastName}
                     </td>
-                    {update ? (
-                      <td>{enrol.course.name}</td>
-                    ) : enid === enrol.enrollId ? (
-                      whichupdate === 'Course' ?(
-                      <td className='col-sm-2'>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          name="coursename"
-                          onChange={(e) => setUpdatedetails(e.target.value)}
-                        >
-                          <option value="">Select Course</option>
-                          {courses.map((cor) => (
-                            <option key={cor.id} value={cor.id}>
-                              {cor.name}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                      ):(
-                        <td>{enrol.course.name}</td>
-                      )
-                    ) : (
-                      <td>{enrol.course.name}</td>
-                    )}
+                    <td>{renderCourseContent(enrol)}</td>
                     <td>{enrol.student.email}</td>
-                    {update ? (
-                      <td className='text-center'><b>{enrol.grade}</b></td>
-                    ) : enid === enrol.enrollId ? (
-                      whichupdate === 'Grade' ?(
-                      <td>
-                        <select
-                          className="form-select"
-                          aria-label="Default select example"
-                          name="grade"
-                          onChange={(e) => setUpdatedetails(e.target.value)}
-                        >
-                          <option value="">Select Grade</option>
-                          {Grade.map((grad,index) => (
-                            <option key={index} value={grad}>
-                              {grad}
-                            </option>
-                          ))}
-                        </select>
-                      </td>
-                      ):(
-                        <td className='text-center'><b>{enrol.grade}</b></td>
-                      )
-                    ) : (
-                      <td className='text-center'><b>{enrol.grade}</b></td>
-                    )}
+                    {renderGradeContent(enrol)}
                     <td>
-                      {update ? (
-                        <>
-                          <button
-                            className="btn btn-secondary mx-2"
-                            onClick={() => updatefunction(enrol.enrollId)}
-                          >
-                            Update
-                          </button>
-                          <button
-                            className="btn btn-danger"
-                            onClick={() => DeleteEnrollment(enrol.enrollId)}
-                          >
-                            Delete
-                          </button>
-                        </>
-                      ) : (
-                        whichupdate === 'null' && enid === enrol.enrollId ? (
-                          <>
-                          <select
-                              className="form-select"
-                              aria-label="Default select example"
-                              name="whichupdate"
-                              onChange={(e) => setWhichupdate(e.target.value)}
-                            >
-                              <option value="">Select Update</option>
-                              {updatelist.map((list, index) => (
-                                <option key={index} value={list}>
-                                  {list}
-                                </option>
-                              ))}
-                            </select>
-                            <button className='btn btn-danger' onClick={cancel}>Cancel</button>
-                          </>
-                        ) :enid === enrol.enrollId  ? (
-                          
-                          <>
-                            <button
-                              className="btn btn-success mx-1"
-                              onClick={(e) => submit(e, enrol.enrollId)}
-                            >
-                              Submit
-                            </button>
-                            <button
-                              className="btn btn-danger"
-                              onClick={cancel}
-                            >
-                              Cancel
-                            </button>
-                          </>
-                        ):(null)
-                      )}
+                      {renderActionContent(enrol)}
                     </td>
                   </tr>
                 );
@@ -258,4 +309,4 @@ function ListEnrollment() {
   );
 }
 
-export default ListEnrollment;
+export default ListEnrollment

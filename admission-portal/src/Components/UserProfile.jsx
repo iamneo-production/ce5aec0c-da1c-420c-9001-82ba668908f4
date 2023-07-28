@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { useContext } from 'react';
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import '../CSS/UserProfile.css';
@@ -39,7 +38,7 @@ const UserProfile = () => {
 
   const getSingleUserData = (storedId) => {
     axios
-      .get(`http://localhost:8080/students/${storedId}`)
+      .get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`)
       .then((response) => {
         setValue(response.data);
         setForm(response.data);
@@ -113,7 +112,7 @@ const UserProfile = () => {
 
     const storedId = localStorage.getItem('userId');
     axios
-      .put(`http://localhost:8080/students/${storedId}`, { ...form, password: newPassword })
+      .put(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`, { ...form, password: newPassword })
       .then((response) => {
         setValue(response.data);
         setShowNewPasswordModal(false);
@@ -164,7 +163,7 @@ const UserProfile = () => {
 
     const storedId = localStorage.getItem('userId');
     axios
-      .put(`http://localhost:8080/students/${storedId}`, form)
+      .put(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`, form)
       .then((response) => {
         setValue(response.data);
         setShowModal(false);

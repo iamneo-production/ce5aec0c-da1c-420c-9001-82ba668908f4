@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const APPLICATION_REST_API = 'http://localhost:8080/admissions'
+const APPLICATION_REST_API = 'https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions'
 
 class ApplicationService{
     getAllAdmissions(){
-        return axios.get(`http://localhost:8080/admissions/all`);
+        return axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions/all`);
     }
 
 
@@ -17,7 +17,7 @@ class ApplicationService{
     }
     
     deleteAdmissionById(id){
-        return axios.delete(`http://localhost:8080/admissions/${id}`);
+        return axios.delete(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${id}`);
     }
 }
 
