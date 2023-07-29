@@ -28,7 +28,11 @@ const ApplicationForm = () => {
 
   const getSingleUserData = (storedId) => {
     axios
+<<<<<<< HEAD
       .get(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`)
+=======
+      .get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/ap/students/${storedId}`)
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
       .then((response) => {
         setUserData(response.data);
       })
@@ -72,7 +76,11 @@ const ApplicationForm = () => {
       formData.append('documents', document);
     }
     try {
+<<<<<<< HEAD
       await axios.post('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions', formData, {
+=======
+      await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions', formData, {
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
         headers: {
           'Content-Type': 'multipart/form-data',
         },

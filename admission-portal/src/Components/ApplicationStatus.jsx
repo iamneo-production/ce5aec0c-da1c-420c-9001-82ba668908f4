@@ -13,7 +13,11 @@ const ApplicationStatus = ({ admissionId }) => {
     // Fetch the admission data by ID
     const fetchAdmission = async () => {
       const studentId = Number(localStorage.getItem('userId'));
+<<<<<<< HEAD
       const response = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
+=======
+      const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions');
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
       const allAdmissions = response.data;
       const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
       
@@ -22,13 +26,21 @@ const ApplicationStatus = ({ admissionId }) => {
         console.log("status is", foundAdmission.status);
 
         try {
+<<<<<<< HEAD
           const response3 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionIds}`);
+=======
+          const response3 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions/${admissionIds}`);
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
           setStudent(response3.data.student);
           setcStatus(foundAdmission.status);
           setFeedBack(foundAdmission.feedback);
 
           // Fetch enrolled course data
+<<<<<<< HEAD
           const response1 = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments');
+=======
+          const response1 = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments');
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
           const allenrollments = response1.data;
           console.log("allenrollmets :",allenrollments);
           const foundenrollment = allenrollments.find(enrollment => enrollment.student.id === studentId);
@@ -39,7 +51,11 @@ const ApplicationStatus = ({ admissionId }) => {
             console.log("Enrolled Course ID:", enrollmentId);
 
             // Fetch enrolled course details by enrollment ID
+<<<<<<< HEAD
             const response2 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments/${enrollmentId}`);
+=======
+            const response2 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments/${enrollmentId}`);
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
             const enrolledCourseData = response2.data;
             console.log("enrolledCourseData :", enrolledCourseData);
             setEnrolledCourse(enrolledCourseData);

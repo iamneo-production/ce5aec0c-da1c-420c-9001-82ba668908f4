@@ -18,7 +18,11 @@ const StudentDashboard = () => {
       const studentId = Number(localStorage.getItem('userId'));
       try {
 
+<<<<<<< HEAD
         const response = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
+=======
+        const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions');
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
     const allAdmissions = response.data;
     console.log(studentId);
 
@@ -34,7 +38,11 @@ const StudentDashboard = () => {
           const admissionId = foundAdmission.admId; // Assuming admission object has an 'id' property
           console.log(admissionId);
 
+<<<<<<< HEAD
           const response3 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionId}`);
+=======
+          const response3 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions/${admissionId}`);
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
           console.log(response3.data);
           const currentstatus = response3.data.status;
           console.log(currentstatus);

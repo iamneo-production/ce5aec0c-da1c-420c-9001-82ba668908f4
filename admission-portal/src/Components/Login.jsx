@@ -43,7 +43,11 @@ function Loginform({ onSignUpClick }) {
     event.preventDefault();
 
     try {
+<<<<<<< HEAD
       const response = await axios.post('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/login', formData);
+=======
+      const response = await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/ap/students/login', formData);
+>>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
       const userId = response.data.id;
 
       // Store the token in localStorage
