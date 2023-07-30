@@ -42,8 +42,7 @@ public class Course {
 		return name;
 	}
 
-	
-public void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
@@ -71,7 +70,7 @@ public void setName(String name) {
 		this.credits = credits;
 	}
 
-    public Course(long id, String name, String description, String prerequisites, String credits) {
+	public Course(long id, String name, String description, String prerequisites, String credits) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -81,5 +80,3 @@ public void setName(String name) {
 	}
 	
 }
-
-

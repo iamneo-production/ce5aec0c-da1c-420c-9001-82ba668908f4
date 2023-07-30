@@ -5,8 +5,11 @@ import java.util.List;
 import com.examly.springapp.repository.CourseRepo;
 import com.examly.springapp.model.Course;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-public class CourseService{
+@Service
+public class CourseService {
+
     @Autowired
     private CourseRepo courserep;
 
@@ -27,6 +30,7 @@ public class CourseService{
         courserep.deleteById(id);
         return "Course deleted successfully";
     }
+
 	
     public String update(Course cor) {
         courserep.save(cor);

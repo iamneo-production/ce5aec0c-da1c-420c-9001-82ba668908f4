@@ -77,4 +77,14 @@ public class StudentController {
         return ResponseEntity.ok(studentRepo.findAll());
     }
 
+    @PostMapping("/login")
+    public ResponseEntity<String> loginUser(@RequestBody Student student) {
+        boolean isAuthenticated = studentService.loginUser(student);
+        if (isAuthenticated) {
+            return new ResponseEntity<>("Login successful", HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>("Invalid email or Password", HttpStatus.UNAUTHORIZED);
+        }
+    }
+
 }
