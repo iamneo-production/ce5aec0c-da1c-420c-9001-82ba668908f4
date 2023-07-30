@@ -42,7 +42,7 @@ public class Course {
 		return name;
 	}
 
-	Sai Venkata Krishna16:58
+	
 public void setName(String name) {
 		this.name = name;
 	}

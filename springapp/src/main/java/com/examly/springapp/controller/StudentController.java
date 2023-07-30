@@ -22,7 +22,7 @@ public class StudentController {
     @Autowired
     private StudentRepo studentRepo;
 
-    @Autowired
+    
     public StudentController(StudentService studentService) {
         this.studentService = studentService;
     }
@@ -71,21 +71,10 @@ public class StudentController {
 
     @DeleteMapping("/students/{id}")
     public ResponseEntity<List<Student>> deleteStudentById(@PathVariable Long id) {
-        Student student = studentService.getStudnetById(id);
+        Student student = studentService.getStudentById(id);
         studentRepo.delete(student);
 
         return ResponseEntity.ok(studentRepo.findAll());
     }
-
-    @PostMapping("/login")
-    public ResponseEntity<String> loginUser(@RequestBody Student student) {
-        boolean isAuthenticated = studentService.loginUser(student);
-        if (isAuthenticated) {
-            return new ResponseEntity<>("Login successful", HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>("Invalid email or Password", HttpStatus.UNAUTHORIZED);
-        }
-    }
-
 
 }
