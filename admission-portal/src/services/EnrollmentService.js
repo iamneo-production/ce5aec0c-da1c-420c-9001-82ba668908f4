@@ -1,10 +1,6 @@
 import axios from "axios";
 
-<<<<<<< HEAD
 const ENROLL_REST_API = 'https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments';
-=======
-const ENROLL_REST_API = 'https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments';
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
 
 class EnrollmentService {
   getAllEnrollments() {

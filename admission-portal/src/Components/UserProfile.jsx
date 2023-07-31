@@ -38,11 +38,7 @@ const UserProfile = () => {
 
   const getSingleUserData = (storedId) => {
     axios
-<<<<<<< HEAD
       .get(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`)
-=======
-      .get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/ap/students/${storedId}`)
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
       .then((response) => {
         setValue(response.data);
         setForm(response.data);
@@ -116,11 +112,7 @@ const UserProfile = () => {
 
     const storedId = localStorage.getItem('userId');
     axios
-<<<<<<< HEAD
       .put(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`, { ...form, password: newPassword })
-=======
-      .put(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/ap/students/${storedId}`, { ...form, password: newPassword })
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
       .then((response) => {
         setValue(response.data);
         setShowNewPasswordModal(false);
@@ -171,11 +163,7 @@ const UserProfile = () => {
 
     const storedId = localStorage.getItem('userId');
     axios
-<<<<<<< HEAD
       .put(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/ap/students/${storedId}`, form)
-=======
-      .put(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/ap/students/${storedId}`, form)
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
       .then((response) => {
         setValue(response.data);
         setShowModal(false);

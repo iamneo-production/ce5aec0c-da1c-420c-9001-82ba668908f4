@@ -29,11 +29,7 @@ const CourseDetails = () => {
           return;
         }
       try {
-<<<<<<< HEAD
         const response = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions');
-=======
-        const response = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions');
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
     const allAdmissions = response.data;
     console.log(studentId);
     const foundAdmission = allAdmissions.find(admission => admission.student.id === studentId);
@@ -46,11 +42,7 @@ const CourseDetails = () => {
         else{
           const admissionId = foundAdmission.admId; // Assuming admission object has an 'id' property
           console.log(admissionId);
-<<<<<<< HEAD
           const response3 = await axios.get(`https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admissions/${admissionId}`);
-=======
-          const response3 = await axios.get(`https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admissions/${admissionId}`);
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
           console.log(response3.data);
           const currentstatus = response3.data.status;
           console.log(currentstatus);
@@ -61,11 +53,7 @@ const CourseDetails = () => {
           }
           else if(currentstatus==='Accepted')
           {
-<<<<<<< HEAD
             const response1 = await axios.get('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments');
-=======
-            const response1 = await axios.get('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments');
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
     const allenrollments = response1.data;
     const foundenrollment = allenrollments.find(enrollment => enrollment.student.id === studentId);
     if(!foundenrollment){
@@ -111,11 +99,7 @@ const CourseDetails = () => {
       };
 
       // Make the API call to enroll the student in the course
-<<<<<<< HEAD
       const response = await axios.post('https://8080-bcdddaaecbdcafebbdadbedabeaeaadbdbabf.project.examly.io/admin/enrollments', enrollmentData);
-=======
-      const response = await axios.post('https://8080-dcccabdbdfdbddcbdccfebbdadbedabbffaabaebdcec.project.examly.io/admin/enrollments', enrollmentData);
->>>>>>> 2b87b123a12e53fd50f65a2a574e7e30180b5da4
 
       // Handle the response, show success message or perform other actions
       console.log('Enrollment successful:', response.data);
